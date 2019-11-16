@@ -1,2 +1,0 @@
-# it-projekt
-Yachtcharter Webseite
