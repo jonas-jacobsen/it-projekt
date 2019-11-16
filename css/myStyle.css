@@ -1,0 +1,247 @@
+html {
+
+}
+
+h1, h2, h3, h4, h5, p, a {
+    font-weight: 200 !important;
+}
+
+body {
+    background: none !important;
+    font-family: sans-serif;
+    margin: 0px;
+
+}
+
+a {
+    text-decoration: none;;
+
+}
+
+button a {
+    color: #fff;
+}
+
+button a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.glyphicon-thumbs-up:before {
+    color: #2266ff;
+}
+
+.glyphicon-thumbs-down:before {
+    color: #2266ff;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.navcontainer {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+/*Überschrift auf den Seiten etwas runtersetzen weil nav-Fixed*/
+.container-top {
+    margin-top: 60px;
+}
+
+/*Error-popup weiter nach unten Setzen weil nav-fixed*/
+.alert {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.register {
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+}
+
+.footer {
+    text-align: center;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background: #286090;
+    color: #ffffff;
+    padding: 5px;
+
+}
+.footerIndex {
+    text-align: center;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background: #286090;
+    color: #ffffff;
+    padding: 5px;
+    opacity: 0.67;
+}
+.footerIndex p {
+    opacity: 2.0;
+    text-shadow: 1.0px 1.0px 1px #777;
+}
+
+/* navbar */
+.navbar .icon-bar {
+    background-color: #ffffff;
+}
+
+a.navbar-brand {
+    color: #ffffff;
+    font-weight: 200;
+}
+
+.navbar-inverse a.navbar-brand {
+     color: #ffffff;
+ }
+.navbar-inverse a.navbar-brand:hover {
+    color: #e4e4e4;
+}
+.navbar-inverse .navbar-toggle{
+    border-color: #ffffff !important;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover{
+    background-color: #2e6da4 !important;
+}
+
+.modal-backdrop {
+    /* bug fix - no overlay */
+    display: none;
+}
+
+.btn-outline-secondary {
+    border-color: #999999!important;
+}
+
+#navbartop {
+    background-image: linear-gradient(to bottom,#286090 0,#2e6da4 100%);
+    border-bottom-color: #2e6da4;
+}
+
+#navbartop li a{
+    color: #ffffff;
+}
+
+#navbartop li a:hover{
+    color: #e4e4e4;
+    background-color: transparent !important;
+}
+.nav li a:focus {
+    background-color: transparent !important;
+}
+
+#navbartopIndex a{
+    color: #ffffff;
+}
+#navbartopIndex a:hover{
+    background-color:transparent !important;
+    color: #e4e4e4;
+}
+
+/*Index Seite */
+.register h2 {
+    color: white;
+    font-size: 50px;
+    text-shadow: 1.0px 1.0px 1px #777;
+}
+.register p {
+    font-size: 18px;
+    text-shadow: 1.0px 1.0px 1px #777;
+}
+.register .btn {
+    width: 75px;
+}
+
+@media (min-width: 767px) {
+    .register .form-control {
+        width: 400px !important;
+        background-color: transparent; /*rgba(0, 0, 255, 0.1) leicht bläulicher Hintergrund*/
+        border-color: #337ab7;
+        text-shadow: 0.5px 0.5px 1px #777;
+        font-weight: 100;
+        color: #ffffff;
+        font-size: 18px;
+    }
+}
+@media (max-width: 767px) {
+    .register h2 {
+        color: white;
+        font-size: 35px;
+    }
+}
+
+/*About Seite*/
+.jumbotron {
+    background-image: url("../assets/pics/boatabout.jpg");
+}
+.jumbotron .container{
+    color: #ffffff;
+}
+.jumbotron h1, .jumbotron p {
+    text-shadow: 1.0px 1.0px 1px #777;
+}
+
+/*result Seite*/
+
+.panel-default {
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+.panel-default:hover{
+    box-shadow: 12px 15px 20px 12px rgba(46,61,73,0.15);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.justify-content-between{
+    justify-content: space-between!important;
+}
+
+.d-flex {
+    display: -webkit-box!important;
+    display: flex!important;
+}
+.col-md-4 h6 {
+    margin-top: 0;
+}
+
+/*Searchbar*/
+#searchbar {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#searchbar .col-md-6 {
+    width: 100%;
+}
+#searchbar .btn-info {
+    background-image: linear-gradient(to bottom,#2e6da4 0,#337ab7 100%);
+    border-color: #337ab7;
+    background: #337ab7;
+}
+
+#searchbar .btn-info:hover {
+    background-image: linear-gradient(to bottom,#2e6da4 0,#337ab7 100%) !important;
+    border-color: #337ab7;
+}
+
+/*Datepicker*/
+.datepicker{
+    width: 100%;
+    border-radius: 3px;
+    border-color: transparent;
+    height: 34px;
+    background-color: #ffffff;
+}
