@@ -34,7 +34,6 @@ if (isset($_POST['ortDerAusleihe'])) {
             background-size: cover;
             height: 100%;
         }
-
         h3, p {
             color: #fff;
         }
@@ -79,7 +78,6 @@ if (isset($_POST['ortDerAusleihe'])) {
                     <option>Daysailer</option>
                     <option>Mehrrumpfboot</option>
                     <option>Beiboot</option>
-
                 </select>
             </div>
         </div>

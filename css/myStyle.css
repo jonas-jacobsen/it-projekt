@@ -180,7 +180,6 @@ a.navbar-brand {
         font-size: 35px;
     }
 }
-
 /*About Seite*/
 .jumbotron {
     background-image: url("../assets/pics/boatabout.jpg");
@@ -193,7 +192,16 @@ a.navbar-brand {
 }
 
 /*result Seite*/
-
+.panel {
+    border: none !important;
+}
+.panel-default .panel-heading {
+    font-size: 20px;
+    font-weight: 200;
+}
+.panel-type {
+    font-weight: 500;
+}
 .panel-default {
     -webkit-transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;

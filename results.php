@@ -12,6 +12,7 @@ $preis = $_GET['preisHS'];
 $id = $_GET['id'];
 $bootname = $_GET['bootname'];
 $ausleihDatum=$_GET['reservation'];
+$formfilled = $_GET['formfilled'];
 
 
 $yachen = "Die wesentliche Eigenschaft einer Yacht im Vergleich zu Jollen und Daysailern ist ihr komfortabler Wohnbereich. Im Grunde sind alle Yachten Fahrtenschiffe. Je nachdem, wo Dein Törn aber hingehen soll, sind mache davon besser und andere schlechter geeignet. Das beginnt bei der Größe der Yacht. Sie sollte im Verhältnis zu der Wellenlänge und Wellenhöhe in dem Revier, das Du besegeln willst, gewählt werden. Aber auch die Rumpfform spielt eine wesentliche Rolle: Langkieler, Kurzkieler, Flügelkieler oder Kimmkieler? Hubkieler sind vor allem in Revieren mit niedrigen Wassertiefen von Vorteil.";
@@ -20,6 +21,7 @@ $windjammer = "Der Traum von der großen Freiheit. Fernweh. Seeromantik.Über vi
 $daysailer = "Der Begriff Daysailer wird oftmals für Yachten mit einer Länge unter 30 Fuß (9,10 Meter) verwendet. Der Name leitet sich aber eher von der Funktionalität ab. Es handelt sich um Segelschiffe, die sich sehr gut für einen Tages- oder Wochenendausflug eignen.";
 $mehrrumpfboote = "Wer kennt Sie nicht, die spektakulären Bilder von Multihulls beim Brechen neuer Geschwindigkeitsrekorde. Nicht zuletzt durch die spektakulären Impressionen des America‘s Cup vor San Francisco boomt das Multihull Segeln.";
 $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung schwimmt die Seglerin das kurze Stück. Wer's weniger nass mag, fährt mit dem Beiboot.";
+
 ?>
 <div id="wrapper"> <!-- start Wrapper -->
     <!-- Sidebar -->
@@ -56,8 +58,8 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                     <div class="form-group">
                         <label for="anzPersonen">Anzahl der Personen</label>
                         <div class="col-sm-10">
-                            <select name="anzPersonen" class="form-control" id="anzPersonen">
-                                <option><?php echo $anzPersonenBuchung ?></option>
+                            <select name="anzPersonen" class="form-control" id="anzPersonen" required="required">
+                                <option><?php if($anzPersonenBuchung == null){echo null;} else {echo $anzPersonenBuchung;} ?></option>
                                 <?php if ($anzPersonenBuchung != 2) {
                                     echo '<option>2</option>';
                                 } ?>
@@ -86,7 +88,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                     <div class="form-group">
                         <label for="anzPersonen">Anzahl der Kajüten</label>
                         <div class="col-sm-10">
-                            <select name="anzKajueten" class="form-control" id="anzPersonen">
+                            <select name="anzKajueten" class="form-control" id="anzKajueten">
                                 <option><?php echo $anzKajueten ?></option>
                                 <?php if ($anzKajueten != 0) {
                                     echo '<option>0</option>';
@@ -112,7 +114,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                     <div class="form-group">
                         <label for="anzPersonen">Datum auswählen</label>
                         <div class="col-sm-10">
-                            <input type="text" class="datepicker" name="reservation" id="datepicker"/>
+                            <input type="text" class="datepicker" name="reservation" id="datepicker" value="<?php echo $ausleihDatum ?>" required="required"/>
                         </div>
                     </div>
                     <button type="submit" id="submitOne" class="btn btn-primary">Filter anwenden</button>
@@ -176,7 +178,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
 
         function showResult($result, $connect)
         {
-            if($_GET['reservation'] == ''){$ausgabe = "Bitte ein Datum im Filter auswählen";} else { $ausgabe = $_GET['reservation']; }
+            if($_GET['reservation'] == null){$ausgabe = 'Bitte ein Datum im Filter auswählen';} else { $ausgabe = $_GET['reservation']; }
             while ($row = mysqli_fetch_array($result)) {
                 echo '
                 <div id="panel1" class="panel panel-default">
@@ -187,14 +189,15 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                 <img src=" ' . $row['bildId'] . '" width="100%">
                             </div>
                             <div class="col-md-4">
-                                <p>Bootstyp: ' . $row['typ'] . ' </p>
-                                <p>Anzahl max. Personen: ' . $row['anzPersonen'] . ' </p>
-                                <p>Anzahl der Kajüten: ' . $row['anzKajueten'] . ' </p>
-                                <p>Länge: ' . $row['length'] . '</p>
-                                <p>Preis: ' . $row['preisHS'] . '&euro; pro Tag</p>
-                         
-                            </div>
-                         
+                                <p><span class="panel-type">Bootstyp:</span> ' . $row['typ'] . ' </p>
+                                <p><span class="panel-type">Anzahl max. Personen:</span> ' . $row['anzPersonen'] . ' </p>
+                                <p><span class="panel-type">Anzahl der Kajüten:</span> ' . $row['anzKajueten'] . ' </p>
+                                <p><span class="panel-type">Länge:</span> ' . $row['length'] . '</p>
+                                <p><span class="panel-type">Preis:</span> ' . $row['preisHS'] . '&euro; pro Tag</p>
+                                <p><span class="panel-type">Ausstatung:</span></p>
+                                
+                                <p><i class="material-icons">wc</i><i class="material-icons">kitchen</i><i class="material-icons">tv</i><i class="material-icons">delete</i></p>
+                            </div>                
                             <div class="col-md-4">                    
                                 <form action="booking.php" class="form-horizontal" method="get">
                                     <fieldset>
@@ -205,21 +208,19 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                                     <p>'.$ausgabe.'</p>
                                                     <input name="ausleihdatum" type="hidden" value=" '.$_GET['reservation'] . '">
                                                     <input name="id" type="hidden" value="' . $row['id'] . '" >
-                                                    <input name="anzPersonenBuchung" type="hidden" value="' . $_GET['anzPersonen'] . '">  
-                                                    <button type="submit" id="buttonID" value="' . $row['id'] . '" class="btn btn-primary">Anfragen</button>                     
+                                                    <input name="anzPersonenBuchung" type="hidden" value="' . $_GET['anzPersonen'] . '">
+                                                    <button type="submit" id="buttonID" value="' . $row['id'] . '" class="btn btn-primary">Anfragen</button>                    
                                                 </div>
                                             </div>
                                         </div>
                                     </fieldset>
                                 </form>
-                            </div>
-                                               
+                            </div>                 
                         </div>
                     </div>
                 </div>';
             }
         }
-
         ?>
     </div>
     <!-- /#page-content-wrapper -->
@@ -251,3 +252,4 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
 </script>
 
 <?php include("components/footer.php") ?>
+

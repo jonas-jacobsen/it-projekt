@@ -67,24 +67,24 @@ $endDatumDB = $endDatum;
     </div>
 </div>
 <div class="container">
-    <form action="confirmation.php" method="post">
+    <form class="needs-validation" action="confirmation.php" method="post" novalidate>
         <div class="row">
             <div class="col-md-8">
                 <h4>Deine Daten</h4>
                 <div class="form-group">
-                    <label for="vorundnachname">Vor- und Nachname</label>
-                    <input type="text" name="persName" class="form-control" id="exampleFormControlInput1"
-                           placeholder="Bsp: max.mustermann@outlook.de">
+                    <label for="validationCustom01">Vor- und Nachname</label>
+                    <input type="text" name="persName" class="form-control" id="validationCustom01"
+                           placeholder="Bsp: max.mustermann@outlook.de" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Emailadresse</label>
-                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-                           placeholder="Bsp: Max Mustermann">
+                    <input type="email" name="email" class="form-control"
+                           placeholder="Bsp: Max Mustermann" id="validationCustom02" required>
                 </div>
                 <div class="form-group">
                     <label for="strasse">Straße und Hausnummer</label>
-                    <input type="text" name="strasse" class="form-control" id="exampleFormControlInput1"
-                           placeholder="Bsp: Feldstraße">
+                    <input type="text" name="strasse" class="form-control"
+                           placeholder="Bsp: Feldstraße" id="validationCustom03" required>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -240,6 +240,8 @@ $endDatumDB = $endDatum;
             </div>
         </div>
     </form>
+
+    <!--Form validieren -->
     <hr>
 </div>
 <script>
@@ -257,6 +259,7 @@ $endDatumDB = $endDatum;
         $('input[type="radio"]').trigger('click');  // trigger the event
     });
 </script>
+
 
 <?php
 include("components/footer.php");
