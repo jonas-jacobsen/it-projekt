@@ -1,10 +1,53 @@
 <?php
 include("components/config.php");
-include("components/header.php");
+$buchungsnummer = $_GET['buchungsnummer'];
+
+if ($_GET['stornieren'] == '1') {
+    $sql3 = "INSERT INTO `Stornierungen` (`id`, `buchungsNr`, `name`, `anfangsDatum`, `endDatum`, `stornierungsDatum`, `email`) VALUES ('', '$buchungsnummer', '$row[persName]', '$row[startDatum]', '$row[endDatum]', 'test', 'test@test.de');";
+    $result = mysqli_query($connect, $sql3);
+
+    $sql4 = "DELETE FROM `Buchungen` WHERE `buchungsNr` = '$buchungsnummer'";
+    $result2 = mysqli_query($connect, $sql4);
+}
+?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="css/myStyle.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="css/dashboard.css" media="screen"/>
+        <link rel="stylesheet" type="text/css" href="css/lightpick.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+        <script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+
+        <script src="js/lightpick.js"></script>
+
+        <link rel="icon" href="assets/pics/favicon.ico">
+
+        <title>XXL Baltic Yachting</title>
+
+    </head>
+<body>
+<?php
 include("components/navbar.php");
 
+
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', 'On');
 /*Buchungsnummer aus confirmation.php abfragen*/
-$buchungsnummer = $_GET['buchungsnummer'];
+
 
 ?>
 
@@ -52,13 +95,22 @@ $buchungsnummer = $_GET['buchungsnummer'];
     $result2 = mysqli_query($connect, $sql2);
     $row2 = mysqli_fetch_array($result2);
 
-    /*Überweisungsinfos anzeigen, falls überweisung gewählt wurde*/
-    if($row['bezahlart'] == "ueberweisung"){
-        $uberweisungsText = " <h4>Bitte überweisen auf folgendes Konto:</h4><p>XXL Baltic Yachting GmbH</p><p>DE05 2005 0110 0220 1555 55</p>";
-    }else{ $uberweisungsText = "";}
+    $sql5 = "SELECT * FROM Stornierungen WHERE buchungsNr = '$buchungsnummer'";
+    $result5 = mysqli_query($connect, $sql5);
+    $row5 = mysqli_fetch_array($result5);
 
-    if (mysqli_num_rows($result) != 0) {
-        echo '
+    /*Überweisungsinfos anzeigen, falls überweisung gewählt wurde*/
+    if ($row['bezahlart'] == "ueberweisung") {
+        $uberweisungsText = " <h4>Bitte überweisen auf folgendes Konto:</h4><p>XXL Baltic Yachting GmbH</p><p>DE05 2005 0110 0220 1555 55</p>";
+    } else {
+        $uberweisungsText = "";
+    }
+
+    if (mysqli_num_rows($result5) != 0) {
+        echo "<div class='container' style='text-align: center'><h3>Die Buchung mit der Buchungsnummer <big>" . $buchungsnummer . "</big> wurder erfolgreich storniert</h3></div>";
+    } else {
+        if (mysqli_num_rows($result) != 0) {
+            echo '
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -96,7 +148,7 @@ $buchungsnummer = $_GET['buchungsnummer'];
                     <div class="form-group">
                     <label for="exampleFormControlTextarea1">Du hast folgende Bezahlung gewählt:</label>
                         <p> ' . $row['bezahlart'] . '</p>
-                        <p>'.$uberweisungsText.'</p>
+                        <p>' . $uberweisungsText . '</p>
                     </div>
     
                     <hr>
@@ -154,17 +206,22 @@ $buchungsnummer = $_GET['buchungsnummer'];
                             <strong>' . $row['gesamtPreis'] . '&euro;</strong>
                         </li>
                     </ul>
+                    <form action="yourbooking.php" method="get">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required>
+                    <input type="hidden" name="stornieren" value="1">
+                    <input type="hidden" name="buchungsnummer" value="' . $buchungsnummer . '">
+                    <label class="form-check-label" for="invalidCheck29">Agree to terms and conditions</label><br>
                     <button type="submit" id="buttonID" class="btn btn-danger">Stornieren</button><br><br>
+                   </form>
                     <p>*Mit klick auf diesen Button stornierst du deine Buchung. Bitte denke daran, dass du deine Buchung bis spätestens eine Woche vorher stornieren kannst</p>
                 </div>
             </div>
             <hr>    
         </div>';
-    } else {
-        echo "<div class='container' style='text-align: center'><h3>Leider ergab deine Suche mit der Buchungsnummer <big>".$buchungsnummer ."</big> keine Ergebnisse</h3></div>";
-    };
-    } ?>
-
-    <?php
-    include("components/footer.php");
-    ?>
+        } else {
+            echo "<div class='container' style='text-align: center'><h3>Leider ergab deine Suche mit der Buchungsnummer <big>" . $buchungsnummer . "</big> keine Ergebnisse</h3></div>";
+        };
+    }
+}
+include("components/footer.php");
+?>

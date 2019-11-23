@@ -3,8 +3,8 @@ include("components/config.php");
 include("components/header.php");
 include("components/navbar.php");
 
-/*error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', 'On');*/
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', 'On');
 
 $auswahlBoot = $_GET['id'];
 $anzPersonenBuchung = $_GET['anzPersonenBuchung'];
@@ -57,7 +57,6 @@ $gesamtPreis = $gesamtTage * $preis;
 
 $anfangsDatumDB = $anfangsDatum;
 $endDatumDB = $endDatum;
-
 ?>
 
 <div class="jumbotron" style="background-image: url('assets/pics/yachthafen.jpg'); background-size: cover">
@@ -67,7 +66,7 @@ $endDatumDB = $endDatum;
     </div>
 </div>
 <div class="container">
-    <form class="needs-validation" action="confirmation.php" method="post" novalidate>
+    <form class="needs-validation" action="confirmation.php" method="post">
         <div class="row">
             <div class="col-md-8">
                 <h4>Deine Daten</h4>
@@ -91,14 +90,14 @@ $endDatumDB = $endDatum;
                         <div class="form-group">
                             <label for="strasse">Postleitzahl</label>
                             <input type="number" name="plz" class="form-control" id="exampleFormControlInput1"
-                                   placeholder="Bsp: 21335">
+                                   placeholder="Bsp: 21335" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="vorundnachname">Ort</label>
-                            <input type="text" name="ort" class="form-control" id="exampleFormControlInput1"
-                                   placeholder="Bsp: Lüneburg">
+                            <input type="text" name="ort" class="form-control" id="exampleFormControlInput2"
+                                   placeholder="Bsp: Lüneburg" required>
                         </div>
                     </div>
                 </div>

@@ -226,6 +226,10 @@ a.navbar-brand {
     margin-top: 0;
 }
 
+.alertRed {
+    color: #c82333;
+}
+
 /*Searchbar*/
 #searchbar {
     text-align: center;

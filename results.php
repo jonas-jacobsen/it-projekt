@@ -11,7 +11,7 @@ $length = $_GET['length'];
 $preis = $_GET['preisHS'];
 $id = $_GET['id'];
 $bootname = $_GET['bootname'];
-$ausleihDatum=$_GET['reservation'];
+$ausleihDatum = $_GET['reservation'];
 $formfilled = $_GET['formfilled'];
 
 
@@ -59,7 +59,11 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                         <label for="anzPersonen">Anzahl der Personen</label>
                         <div class="col-sm-10">
                             <select name="anzPersonen" class="form-control" id="anzPersonen" required="required">
-                                <option><?php if($anzPersonenBuchung == null){echo null;} else {echo $anzPersonenBuchung;} ?></option>
+                                <option><?php if ($anzPersonenBuchung == null) {
+                                        echo null;
+                                    } else {
+                                        echo $anzPersonenBuchung;
+                                    } ?></option>
                                 <?php if ($anzPersonenBuchung != 2) {
                                     echo '<option>2</option>';
                                 } ?>
@@ -114,7 +118,8 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                     <div class="form-group">
                         <label for="anzPersonen">Datum auswählen</label>
                         <div class="col-sm-10">
-                            <input type="text" class="datepicker" name="reservation" id="datepicker" value="<?php echo $ausleihDatum ?>" required="required"/>
+                            <input type="text" class="datepicker" name="reservation" id="datepicker"
+                                   value="<?php echo $ausleihDatum ?>" required="required"/>
                         </div>
                     </div>
                     <button type="submit" id="submitOne" class="btn btn-primary">Filter anwenden</button>
@@ -178,7 +183,15 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
 
         function showResult($result, $connect)
         {
-            if($_GET['reservation'] == null){$ausgabe = 'Bitte ein Datum im Filter auswählen';} else { $ausgabe = $_GET['reservation']; }
+            if ($_GET['reservation'] == null) {
+                $ausgabe = '<p class="alertRed">Bitte ein Datum im Filter auswählen</p>';
+            } else {
+                $ausgabe = $_GET['reservation'];
+            }
+            if ($_GET['anzPersonen'] == null) {
+                $ausgabePers = '<p class="alertRed">Bitte Anzahl der Personen im Filter auswählen</p>';
+            } else {
+            }
             while ($row = mysqli_fetch_array($result)) {
                 echo '
                 <div id="panel1" class="panel panel-default">
@@ -194,9 +207,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                 <p><span class="panel-type">Anzahl der Kajüten:</span> ' . $row['anzKajueten'] . ' </p>
                                 <p><span class="panel-type">Länge:</span> ' . $row['length'] . '</p>
                                 <p><span class="panel-type">Preis:</span> ' . $row['preisHS'] . '&euro; pro Tag</p>
-                                <p><span class="panel-type">Ausstatung:</span></p>
-                                
-                                <p><i class="material-icons">wc</i><i class="material-icons">kitchen</i><i class="material-icons">tv</i><i class="material-icons">delete</i></p>
+                               
                             </div>                
                             <div class="col-md-4">                    
                                 <form action="booking.php" class="form-horizontal" method="get">
@@ -205,8 +216,8 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                             <div class="controls">
                                                 <div class="input-prepend">
                                                     <h3>Dein Ausgewähltes Datum: </h3>
-                                                    <p>'.$ausgabe.'</p>
-                                                    <input name="ausleihdatum" type="hidden" value=" '.$_GET['reservation'] . '">
+                                                    <p>' . $ausgabe . '<br> '.$ausgabePers.'</p>
+                                                    <input name="ausleihdatum" type="hidden" value=" ' . $_GET['reservation'] . '">
                                                     <input name="id" type="hidden" value="' . $row['id'] . '" >
                                                     <input name="anzPersonenBuchung" type="hidden" value="' . $_GET['anzPersonen'] . '">
                                                     <button type="submit" id="buttonID" value="' . $row['id'] . '" class="btn btn-primary">Anfragen</button>                    
@@ -221,6 +232,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                 </div>';
             }
         }
+
         ?>
     </div>
     <!-- /#page-content-wrapper -->
@@ -234,7 +246,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
         field: document.getElementById('datepicker'),
         singleDate: false,
         format: 'DD.MM.YYYY',
-        onSelect: function(start, end){
+        onSelect: function (start, end) {
             var str = '';
             str += start ? start.format('DD.MM.YYYY') + ' bis zum ' : '';
             str += end ? end.format('DD.MM.YYYY') : '...';
