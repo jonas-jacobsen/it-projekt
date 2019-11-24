@@ -1,18 +1,18 @@
 <?php
+/*error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', 'On');*/
+
 include("components/config.php");
 include("components/header.php");
 include("components/navbar.php");
+
 
 //Filter
 $typ = $_GET['typ'];
 $anzPersonenBuchung = $_GET['anzPersonen'];
 $anzKajueten = $_GET['anzKajueten'];
-$length = $_GET['length'];
 $preis = $_GET['preisHS'];
-$id = $_GET['id'];
-$bootname = $_GET['bootname'];
 $ausleihDatum = $_GET['reservation'];
-$formfilled = $_GET['formfilled'];
 
 
 $yachen = "Die wesentliche Eigenschaft einer Yacht im Vergleich zu Jollen und Daysailern ist ihr komfortabler Wohnbereich. Im Grunde sind alle Yachten Fahrtenschiffe. Je nachdem, wo Dein Törn aber hingehen soll, sind mache davon besser und andere schlechter geeignet. Das beginnt bei der Größe der Yacht. Sie sollte im Verhältnis zu der Wellenlänge und Wellenhöhe in dem Revier, das Du besegeln willst, gewählt werden. Aber auch die Rumpfform spielt eine wesentliche Rolle: Langkieler, Kurzkieler, Flügelkieler oder Kimmkieler? Hubkieler sind vor allem in Revieren mit niedrigen Wassertiefen von Vorteil.";
@@ -205,7 +205,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                 <p><span class="panel-type">Bootstyp:</span> ' . $row['typ'] . ' </p>
                                 <p><span class="panel-type">Anzahl max. Personen:</span> ' . $row['anzPersonen'] . ' </p>
                                 <p><span class="panel-type">Anzahl der Kajüten:</span> ' . $row['anzKajueten'] . ' </p>
-                                <p><span class="panel-type">Länge:</span> ' . $row['length'] . '</p>
+                                <p><span class="panel-type">Länge:</span> ' . $row['length'] . ' m</p>
                                 <p><span class="panel-type">Preis:</span> ' . $row['preisHS'] . '&euro; pro Tag</p>
                                
                             </div>                

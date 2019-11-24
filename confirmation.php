@@ -41,8 +41,8 @@ if ($_POST['bezahlart'] == "Kreditkarte") {
 
 } else {
     $ueberweisungstext = "Bitte überweise den oben genannten Betrag auf folgendes Konto:
-    XXL Baltic Yachting GmbH
-    DE05 2005 0110 0220 1555 55
+XXL Baltic Yachting GmbH
+DE05 2005 0110 0220 1555 55
     ";
 };
 $betreff = "XXL Baltic Yachting Buchungsbestaetigung: " . $_POST["buchungsNr"];
@@ -75,9 +75,8 @@ Vielen Spaß auf deiner Reise wünscht dir das Team der XXL Baltic Yachting";
 
 $mail = "buchung@xxlyachtigkiel.com";
 $empfaenger = $_POST["email"];
-if (($nachricht != '') && ($betreff != '')) {
-    mail($empfaenger, $betreff, $nachricht);
-}
+
+mail($empfaenger, $betreff, $nachricht);
 ?>
 
 <div class="jumbotron" style="background-image: url('assets/pics/yachthafen.jpg'); background-size: cover">
