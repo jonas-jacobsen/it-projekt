@@ -34,7 +34,6 @@ list($anfangsDatum, $endDatum) = explode("-", $ausleihDatum);
 /*Umrechnung des Datums in Tage*/
 function seDay($begin, $end, $format, $sep)
 {
-
     $pos1 = strpos($format, 'd');
     $pos2 = strpos($format, 'm');
     $pos3 = strpos($format, 'Y');
@@ -49,7 +48,6 @@ function seDay($begin, $end, $format, $sep)
         return $first - $second;
     else
         return $second - $first;
-
 }
 
 $gesamtTage = seDay($anfangsDatum, $endDatum, "dmY", ".") + 1;
@@ -61,7 +59,7 @@ $endDatumDB = $endDatum;
 
 <div class="jumbotron" style="background-image: url('assets/pics/yachthafen.jpg'); background-size: cover">
     <div class="container">
-        <h1><?php echo $row['bootname'];?></h1>
+        <h1><?php echo $row['bootname']; ?></h1>
         <p></p>
     </div>
 </div>
@@ -103,7 +101,8 @@ $endDatumDB = $endDatum;
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Besondere Wünsche</label>
-                    <textarea class="form-control" name="anschreiben" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" name="anschreiben" id="exampleFormControlTextarea1"
+                              rows="3"></textarea>
                 </div>
 
                 <hr>
@@ -111,7 +110,8 @@ $endDatumDB = $endDatum;
                 <h4>Bezahlung</h4>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="bezahlart" id="exampleRadios1" value="Kreditkarte"
+                    <input class="form-check-input" type="radio" name="bezahlart" id="exampleRadios1"
+                           value="Kreditkarte"
                            checked>
                     <label class="form-check-label" for="exampleRadios1">
                         Kreditkarte
@@ -168,12 +168,12 @@ $endDatumDB = $endDatum;
                 <input type="hidden" name="gesamtPreis" value="<?php echo $gesamtPreis ?>">
                 <input type="hidden" name="anzPersonenBuchung" value="<?php echo $anzPersonenBuchung ?>">
                 <input type="hidden" name="ausleihdatum" value="<?php echo $ausleihDatum ?>">
-                <input type="hidden" name="gesamtTage" value="<?php echo $gesamtTage?>">
-                <input type="hidden" name="preisHS" value="<?php echo $preis?>">
-                <input type="hidden" name="gesamtPreis" value="<?php echo $gesamtPreis?>">
-                <input type="hidden" name="anzKajueten" value="<?php echo $anzKajueten?>">
-                <input type="hidden" name="typ" value="<?php echo $typ?>">
-                <input type="hidden" name="bootname" value="<?php echo $row['bootname']?>">
+                <input type="hidden" name="gesamtTage" value="<?php echo $gesamtTage ?>">
+                <input type="hidden" name="preisHS" value="<?php echo $preis ?>">
+                <input type="hidden" name="gesamtPreis" value="<?php echo $gesamtPreis ?>">
+                <input type="hidden" name="anzKajueten" value="<?php echo $anzKajueten ?>">
+                <input type="hidden" name="typ" value="<?php echo $typ ?>">
+                <input type="hidden" name="bootname" value="<?php echo $row['bootname'] ?>">
             </div>
 
             <!--Auswahlbox rechte Seite -->
@@ -234,6 +234,8 @@ $endDatumDB = $endDatum;
                         <strong><?php echo $gesamtPreis ?>&euro;</strong>
                     </li>
                 </ul>
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required>
+                <label class="form-check-label" for="invalidCheck29">Agree to terms and conditions</label><br>
                 <button type="submit" name="submit" id="buttonID" class="btn btn-primary">Buchen</button>
                 <p>*Mit abschließen deiner Buchung und so weiter und so fort...</p>
             </div>

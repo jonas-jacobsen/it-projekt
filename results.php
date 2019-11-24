@@ -186,7 +186,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
             if ($_GET['reservation'] == null) {
                 $ausgabe = '<p class="alertRed">Bitte ein Datum im Filter auswählen</p>';
             } else {
-                $ausgabe = $_GET['reservation'];
+                $ausgabe = $_GET['reservation'] . '<br><br>';
             }
             if ($_GET['anzPersonen'] == null) {
                 $ausgabePers = '<p class="alertRed">Bitte Anzahl der Personen im Filter auswählen</p>';
@@ -216,7 +216,8 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                             <div class="controls">
                                                 <div class="input-prepend">
                                                     <h3>Dein Ausgewähltes Datum: </h3>
-                                                    <p>' . $ausgabe . '<br> '.$ausgabePers.'</p>
+                                                    ' . $ausgabe . '
+                                                    '.$ausgabePers.'
                                                     <input name="ausleihdatum" type="hidden" value=" ' . $_GET['reservation'] . '">
                                                     <input name="id" type="hidden" value="' . $row['id'] . '" >
                                                     <input name="anzPersonenBuchung" type="hidden" value="' . $_GET['anzPersonen'] . '">

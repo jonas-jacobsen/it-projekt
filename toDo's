@@ -2,6 +2,12 @@
 -Formulare nur abschicken, wenn alle felder ausgefüllt sind sonst error message --> Result seite funktioniert noch nicht
 -Verfügbarkeitstabelle (Nice To have)
 -Ausstatung des Bootes mit kleinen Icons (Nice To have)
+-Panel Leere Felder Satz besser gestallten
+
+
+Was noch nicht funktioniert:
+-bookingseite auswahl kreditkarte --> bei confirmation wird trotzdem überweisung angezeigt
+
 
 erledigt:
 -stornierungsbutton Programmieren
