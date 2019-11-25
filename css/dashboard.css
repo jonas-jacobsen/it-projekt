@@ -52,12 +52,10 @@ body {
 
 #page-content-wrapper {
     width: 100%;
-    position: absolute;
     padding: 15px;
 }
 
 #wrapper.toggled #page-content-wrapper {
-    position: absolute;
     margin-right: -250px;
 }
 

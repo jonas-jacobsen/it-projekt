@@ -180,6 +180,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
             showResult($result, $connect);
         } else {
             echo "<h3>Leider ergab deine Suche keine Ergebnisse</h3>";
+            echo '<div class="platzhalter"></div>';
         }
 
         function showResult($result, $connect)

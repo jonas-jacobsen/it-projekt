@@ -1,7 +1,7 @@
 <div id="footer">
     <div class="container">
         <div class="titelschrift">
-            <a style="text-decoration: none; color: #FFFFFF" href="index.php">XXL Baltic Yachting</a>
+            <a style="text-decoration: none; color: #FFFFFF" href="index.php">XXL Baltic Yachting GmbH</a>
         </div>
         <hr/>
         <div class="row">
@@ -33,7 +33,7 @@
                 <!-- Copyright -->
                 <div class="copyright">
                     <ul class="menu">
-                        <li>&copy; XXL Baltic Yachting - <?php  $jahr = date("Y", time()); echo $jahr ?>  . All rights reserved. |</li>
+                        <li>&copy; XXL Baltic Yachting GmbH - <?php  $jahr = date("Y", time()); echo $jahr ?>  . All rights reserved. |</li>
                         <li><a href="impressum.php">Impressum |</a></li>
                         <li><a href="#">Sitemap</a></li>
                     </ul>

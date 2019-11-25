@@ -230,6 +230,10 @@ a.navbar-brand {
         color: white;
         font-size: 35px;
     }
+    #footer .titelschrift {
+        font-size: 2em;
+
+    }
 }
 /*About Seite*/
 .jumbotron {
@@ -312,4 +316,9 @@ a.navbar-brand {
     border-color: transparent;
     height: 34px;
     background-color: #ffffff;
+}
+
+/*yourbooking*/
+.platzhalter {
+    height: 25em;
 }

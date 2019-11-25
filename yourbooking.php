@@ -52,7 +52,7 @@ ini_set('display_errors', 'On');
         </div>
     </div>
 <?php if ($buchungsnummer == "") {
-
+    echo '<div class="platzhalter"></div>';
 } else {
     /*Buchungsdaten aus Buchungen DB laden*/
     $sql = "SELECT * FROM Buchungen WHERE buchungsNr = '$buchungsnummer'";
@@ -77,6 +77,7 @@ ini_set('display_errors', 'On');
 
     if (mysqli_num_rows($result5) != 0) {
         echo "<div class='container' style='text-align: center'><h3>Die Buchung mit der Buchungsnummer <big>" . $buchungsnummer . "</big> wurder erfolgreich storniert</h3></div>";
+        echo '<div class="platzhalter"></div>';
     } else {
         if (mysqli_num_rows($result) != 0) {
             echo '
@@ -188,7 +189,8 @@ ini_set('display_errors', 'On');
             <hr>    
         </div>';
         } else {
-            echo "<div class='container' style='text-align: center'><h3>Leider ergab deine Suche mit der Buchungsnummer <big>" . $buchungsnummer . "</big> keine Ergebnisse</h3></div>";
+            echo '<div class="container" style="text-align: center"><h3>Leider ergab deine Suche mit der Buchungsnummer <big>' . $buchungsnummer . '</big> keine Ergebnisse</h3></div>';
+            echo '<div class="platzhalter"></div>';
         };
     }
 }
