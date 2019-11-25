@@ -1,7 +1,7 @@
 <div id="footer">
     <div class="container">
         <div class="titelschrift">
-            <a style="text-decoration: none; color: #FFFFFF" href="index.php">XXL Baltic Yachting GmbH</a>
+            <a style="text-decoration: none; color: #FFFFFF" href="index.php">XXL Baltic Yachting</a>
         </div>
         <hr/>
         <div class="row">

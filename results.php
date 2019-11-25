@@ -59,7 +59,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                     <div class="form-group">
                         <label for="anzPersonen">Anzahl der Personen</label>
                         <div class="col-sm-10">
-                            <select name="anzPersonen" class="form-control" id="anzPersonen" required="required">
+                            <select name="anzPersonen" class="form-control" id="anzPersonen">
                                 <option><?php if ($anzPersonenBuchung == null) {
                                         echo null;
                                     } else {
@@ -120,7 +120,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                         <label for="anzPersonen">Datum auswählen</label>
                         <div class="col-sm-10">
                             <input type="text" class="datepicker" name="reservation" id="datepicker"
-                                   value="<?php echo $ausleihDatum ?>" required="required"/>
+                                   value="<?php echo $ausleihDatum ?>"/>
                         </div>
                     </div>
                     <button type="submit" id="submitOne" class="btn btn-primary">Filter anwenden</button>
@@ -180,6 +180,12 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
             showResult($result, $connect);
         } else {
             echo "<h3>Leider ergab deine Suche keine Ergebnisse</h3>";
+            if($_GET["typ"]=="Jolle"){
+                echo '<p>Unsere Jollen haben leider keine Kajüten. Es gibt jedoch genug Stauraum vorne im Bugs, falls du überlegst eine Tagestour zu machen. <br> Wenn du weiterhing eine Jolle ausleihen willst, setzte den Filter bei Kajüten bitte auf null.</p>';
+            }
+            if($_GET["typ"]=="Beiboot"){
+                echo '<p>Bitte denke daran, dass Beiboote keine Kajüte besitzen. <br>Wenn du weiterhing ein Beiboot ausleihen willst, setzte den Filter bei Kajüten bitte auf null.</p>';
+            }
             echo '<div class="platzhalter"></div>';
         }
 
