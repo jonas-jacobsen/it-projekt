@@ -2,7 +2,7 @@
     <div class="container">
         <?php
         $jahr = date("Y", time());
-        echo "<p>&copy; XXL Baltic Yachting " . $jahr . "</p>";
+        echo "<p>&copy; XXL Baltic Yachting " . $jahr . " | <a href='impressum.php'>Impressum</a> </p>";
         ?>
     </div>
 </div>

@@ -52,6 +52,7 @@ button a:hover {
     margin-right: 20px;
     margin-bottom: 50px;
 }
+/*footer*/
 
 .footer {
     text-align: center;
@@ -80,6 +81,22 @@ button a:hover {
 .footerIndex p {
     opacity: 2.0;
     text-shadow: 1.0px 1.0px 1px #777;
+}
+
+.footerIndex a {
+    color: #ffffff;
+}
+.footer a {
+    color: #ffffff;
+}
+
+.footerIndex a:hover {
+    color: #eeeaff;
+    text-decoration: none;
+}
+.footer a:hover {
+    color: #eeeaff;
+    text-decoration: none;
 }
 
 /* navbar */
@@ -172,7 +189,7 @@ a.navbar-brand {
 }
 /*About Seite*/
 .jumbotron {
-    background-image: url("../assets/pics/boatabout.jpg");
+    background-image: url("../assets/pics/bildAboutSite.jpg");
 }
 .jumbotron .container{
     color: #ffffff;
