@@ -1,4 +1,5 @@
 <?php
+
 /*error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', 'On');*/
 
@@ -193,6 +194,15 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
             } else {
             }
             while ($row = mysqli_fetch_array($result)) {
+                if ($_GET["anzPersonen"] != "" && $_GET["reservation"] != ""){
+                    $abschicken = "booking.php";
+                    $input = ' <input name="ausleihdatum" type="hidden" value=" ' . $_GET[reservation] . '"><input name="id" type="hidden" value="' . $row[id] . '" ><input name="anzPersonenBuchung" type="hidden" value="' . $_GET[anzPersonen] . '">';
+                    $button = '<button type="submit" id="buttonID" value="' . $row['id'] . '" class="btn btn-primary">Anfragen</button>';
+                } else {
+                    $abschicken = "results.php?typ='.$_GET[typ]";
+                    $input = '<input name="typ" type="hidden" value="' . $_GET[typ] . '">';
+                    $button = '<button type="submit" id="buttonID" disabled="disabled" value="' . $row['id'] . '" class="btn btn-primary">Anfragen</button>';
+                }
                 echo '
                 <div id="panel1" class="panel panel-default">
                 <div class="panel-heading">' . $row['bootname'] . '</div>
@@ -207,10 +217,9 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                 <p><span class="panel-type">Anzahl der Kajüten:</span> ' . $row['anzKajueten'] . ' </p>
                                 <p><span class="panel-type">Länge:</span> ' . $row['length'] . ' m</p>
                                 <p><span class="panel-type">Preis:</span> ' . $row['preisHS'] . '&euro; pro Tag</p>
-                               
                             </div>                
                             <div class="col-md-4">                    
-                                <form action="booking.php" class="form-horizontal" method="get">
+                                <form action="'.$abschicken.'" class="form-horizontal" method="get">
                                     <fieldset>
                                         <div class="control-group">                 
                                             <div class="controls">
@@ -218,10 +227,8 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                                     <h3>Dein Ausgewähltes Datum: </h3>
                                                     ' . $ausgabe . '
                                                     '.$ausgabePers.'
-                                                    <input name="ausleihdatum" type="hidden" value=" ' . $_GET['reservation'] . '">
-                                                    <input name="id" type="hidden" value="' . $row['id'] . '" >
-                                                    <input name="anzPersonenBuchung" type="hidden" value="' . $_GET['anzPersonen'] . '">
-                                                    <button type="submit" id="buttonID" value="' . $row['id'] . '" class="btn btn-primary">Anfragen</button>                    
+                                                    '.$input.'
+                                                    '.$button.'                   
                                                 </div>
                                             </div>
                                         </div>
@@ -246,6 +253,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
     var picker = new Lightpick({
         field: document.getElementById('datepicker'),
         singleDate: false,
+        minDate: new Date(),
         format: 'DD.MM.YYYY',
         onSelect: function (start, end) {
             var str = '';

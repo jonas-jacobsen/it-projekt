@@ -1,16 +1,17 @@
--Buchungsbestättigung per Mail
--Formulare nur abschicken, wenn alle felder ausgefüllt sind sonst error message --> Result seite funktioniert noch nicht
 -Verfügbarkeitstabelle (Nice To have)
 -Ausstatung des Bootes mit kleinen Icons (Nice To have)
--Panel Leere Felder Satz besser gestallten
--impressum-Seite
+
 -footer bottom fixed
 
 
 Was noch nicht funktioniert:
--bookingseite auswahl kreditkarte --> bei confirmation wird trotzdem überweisung angezeigt
 
 
 erledigt:
 -stornierungsbutton Programmieren
 -Stornierungsdb einrichten mit diversen Attributen
+-impressum-Seite
+-bookingseite auswahl kreditkarte --> bei confirmation wird trotzdem überweisung angezeigt
+-Panel Leere Felder Satz besser gestallten
+-Formulare nur abschicken, wenn alle felder ausgefüllt sind sonst error message --> Result seite funktioniert noch nicht
+-Buchungsbestättigung per Mail
