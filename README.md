@@ -1,3 +1,2 @@
-# yachtcharter
-# yachtcharter
-# it-projektmanagement
+# It-projektmanagement
+# XXL Baltic Yachting GmbH

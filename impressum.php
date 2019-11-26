@@ -11,7 +11,7 @@ include ("components/navbar.php");
         </div>
     </div>
     <div class="container">
-        <div class="row featurette">
+        <div class="row">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Impressum</h2> <br>
                 <p class="lead">Inhaber Max Mustermann</p>

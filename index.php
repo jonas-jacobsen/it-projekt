@@ -59,6 +59,8 @@ if (isset($_POST['ortDerAusleihe'])) {
             <ul class="nav navbar-nav navbar-right" >
                 <li><a href="yourbooking.php">Deine Buchung</a></li>
                 <li><a href="about.php">Erfahre mehr</a></li>
+                <li><a href="tel:+499123456789"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></a></li>
+                <li><a href="about.php#kontaktformular"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
             </ul>
         </div><!--/.navbar-collapse -->
     </div>

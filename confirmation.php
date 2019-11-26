@@ -12,10 +12,6 @@ $result = mysqli_query($connect, $sql);
 
 $buchungsNr = $_POST['buchungsNr'];
 
-$sql = "SELECT * FROM Buchungen WHERE $buchungsNr = ";
-$result = mysqli_query($connect, $sql);
-$row = mysqli_fetch_array($result);
-
 $anfangsDatum = $_POST['anfangsDatum'];
 $endDatum = $_POST['endDatum'];
 
@@ -45,9 +41,10 @@ XXL Baltic Yachting GmbH
 DE05 2005 0110 0220 1555 55
     ";
 };
-$betreff = "XXL Baltic Yachting Buchungsbestaetigung: " . $_POST["buchungsNr"];
 
-$nachricht = "Hallo " . $_POST["persName"] . ",
+$subject = "XXL Baltic Yachting Buchungsbestaetigung: " . $_POST["buchungsNr"];
+
+$content = "Hallo " . $_POST["persName"] . ",
 
 hiermit bestätigen wir deine Buchung mit der Buchungsnummer " . $_POST["buchungsNr"] . ".
 Deine Buchung ist mit folgenden Daten bei uns eingegangen:
@@ -61,7 +58,7 @@ Deine Besonderen Wünsche: " . $_POST["anschreiben"] . "
 Deine Infos zum gemieteten Boot:
 Ausleihdatum: " . $_POST["anfangsDatum"] . " - " . $_POST["endDatum"] . "
 Bootsname: " . $_POST["bootname"] . "
-Anzahl der Personen: " . $_POST["anzPersonenBuchung"] . "
+Anzahl der gebuchten Personen: " . $_POST["anzPersonenBuchung"] . "
 Anzahl der Kajüten: " . $_POST["anzKajueten"] . "
 Preis pro Tag: " . $_POST["preisHS"] . " €
 Gesamtpreis: " . $_POST["gesamtPreis"] . " €
@@ -72,11 +69,10 @@ Du hast folgende Bezahlung ausgewählt: " . $_POST['bezahlart'] . "
 Falls du deine Buchung stornieren moechtest, folge bitte den Link: https://come-prima.de/Projekte/it-projektmanagement/yourbooking.php
 
 Vielen Spaß auf deiner Reise wünscht dir das Team der XXL Baltic Yachting";
+$headers .= "From: balticyachting@outlook.de";
+$emailTo = $_POST["email"];
 
-$mail = "buchung@xxlyachtigkiel.com";
-$empfaenger = $_POST["email"];
-
-mail($empfaenger, $betreff, $nachricht);
+mail($emailTo, $subject, $content, $headers);
 ?>
 
 <div class="jumbotron" style="background-image: url('assets/pics/yachthafen.jpg'); background-size: cover">
@@ -201,8 +197,6 @@ mail($empfaenger, $betreff, $nachricht);
             </ul>
         </div>
     </div>
-    <hr>
-
 </div>
 
 <?php

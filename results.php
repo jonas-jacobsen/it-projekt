@@ -194,11 +194,12 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
             if ($_GET['reservation'] == null) {
                 $ausgabe = '<p class="alertRed">Bitte ein Datum im Filter auswählen</p>';
             } else {
-                $ausgabe = $_GET['reservation'] . '<br><br>';
+                $ausgabe = '<p>'.$_GET['reservation'] . '</p>';
             }
             if ($_GET['anzPersonen'] == null) {
                 $ausgabePers = '<p class="alertRed">Bitte Anzahl der Personen im Filter auswählen</p>';
             } else {
+                $ausgabePers = "<p>Anzahl Personen: ".$_GET['anzPersonen'] . '</p>';
             }
             while ($row = mysqli_fetch_array($result)) {
                 if ($_GET["anzPersonen"] != "" && $_GET["reservation"] != ""){
