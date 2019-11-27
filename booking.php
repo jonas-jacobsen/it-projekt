@@ -49,7 +49,6 @@ function seDay($begin, $end, $format, $sep)
     else
         return $second - $first;
 }
-
 $gesamtTage = seDay($anfangsDatum, $endDatum, "dmY", ".") + 1;
 $gesamtPreis = $gesamtTage * $preis;
 
@@ -175,7 +174,6 @@ $endDatumDB = $endDatum;
                 <input type="hidden" name="typ" value="<?php echo $typ ?>">
                 <input type="hidden" name="bootname" value="<?php echo $row['bootname'] ?>">
             </div>
-
             <!--Auswahlbox rechte Seite -->
             <div class="col-md-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -241,7 +239,6 @@ $endDatumDB = $endDatum;
             </div>
         </div>
     </form>
-
     <!--Form validieren -->
     <hr>
 </div>
@@ -260,7 +257,6 @@ $endDatumDB = $endDatum;
         $('input[type="radio"]').trigger('click');  // trigger the event
     });
 </script>
-
 
 <?php
 include("components/footer.php");

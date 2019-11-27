@@ -1,10 +1,10 @@
 -Verfügbarkeitstabelle (Nice To have)
 -Ausstatung des Bootes mit kleinen Icons (Nice To have)
--footer bottom fixed
--bei result-Seite wenn keine Ergebnisse gefunden werden, auflistung von Booten
+-bei result-Seite wenn keine Ergebnisse gefunden werden --> auflistung von Booten die noch buchbar sind
 -Bei buchung auch eine Mail an XXL baltic Yachting
 
 Was noch nicht funktioniert:
+-
 
 erledigt:
 -stornierungsbutton Programmieren
@@ -14,3 +14,4 @@ erledigt:
 -Panel Leere Felder Satz besser gestallten
 -Formulare nur abschicken, wenn alle felder ausgefüllt sind sonst error message --> Result seite funktioniert noch nicht
 -Buchungsbestättigung per Mail
+-footer bottom fixed

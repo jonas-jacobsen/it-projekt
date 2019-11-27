@@ -212,21 +212,34 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                     $button = '<button type="submit" id="buttonID" disabled="disabled" value="' . $row['id'] . '" class="btn btn-primary">Anfragen</button>';
                 }
                 echo '
-                <div id="panel1" class="panel panel-default">
+                 <div id="panel1" class="panel panel-default">
                 <div class="panel-heading">' . $row['bootname'] . '</div>
+                <div class="user"><img class="img-circle" src="assets/pics/panelicon.jpg"></div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-4">
-                                <img src=" ' . $row['bildId'] . '" width="100%">
-                            </div>
-                            <div class="col-md-4">
-                                <p><span class="panel-type">Bootstyp:</span> ' . $row['typ'] . ' </p>
-                                <p><span class="panel-type">Anzahl max. Personen:</span> ' . $row['anzPersonen'] . ' </p>
-                                <p><span class="panel-type">Anzahl der Kajüten:</span> ' . $row['anzKajueten'] . ' </p>
-                                <p><span class="panel-type">Länge:</span> ' . $row['length'] . ' m</p>
-                                <p><span class="panel-type">Preis:</span> ' . $row['preisHS'] . '&euro; pro Tag</p>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-xs-6"><p><span class="panel-type">Bootstyp: </span></p></div>
+                                    <div class="col-xs-6"><p>' . $row['typ'] . ' </p></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><p><span class="panel-type">Anzahl max. Personen:</span></p></div>
+                                    <div class="col-xs-6"><p>' . $row['anzPersonen'] . ' </p></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><p><span class="panel-type">Anzahl der Kajüten:</span></p></div>
+                                    <div class="col-xs-6"><p>' . $row['anzKajueten'] . ' </p></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><p><span class="panel-type">Länge:</span></p></div>
+                                    <div class="col-xs-6"><p>' . $row['length'] . ' m</p></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6"><p><span class="panel-type">Preis:</span></p></div>
+                                    <div class="col-xs-6"><p> ' . $row['preisHS'] . '&euro; pro Tag</p></div>
+                                </div>
                             </div>                
-                            <div class="col-md-4">                    
+                            <div class="col-md-6">                    
                                 <form action="'.$abschicken.'" class="form-horizontal" method="get">
                                     <fieldset>
                                         <div class="control-group">                 
