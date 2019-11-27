@@ -232,8 +232,8 @@ $endDatumDB = $endDatum;
                         <strong><?php echo $gesamtPreis ?>&euro;</strong>
                     </li>
                 </ul>
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required>
-                <label class="form-check-label" for="invalidCheck29">Agree to terms and conditions</label><br>
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required="required">
+                <label class="form-check-label" for="invalidCheck29">Agree to terms and conditions*</label><br>
                 <button type="submit" name="submit" id="buttonID" class="btn btn-primary">Buchen</button>
                 <p>*Mit abschließen deiner Buchung und so weiter und so fort...</p>
             </div>

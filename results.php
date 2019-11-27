@@ -214,7 +214,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                 echo '
                  <div id="panel1" class="panel panel-default">
                 <div class="panel-heading">' . $row['bootname'] . '</div>
-                <div class="user"><img class="img-circle" src="assets/pics/panelicon.jpg"></div>
+                <div class="user"><img class="img-circle img-fit" width: 180px height="180" src="'.$row['bildId'].'"></div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-6">

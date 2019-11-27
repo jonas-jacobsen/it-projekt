@@ -1,7 +1,7 @@
 -Verfügbarkeitstabelle (Nice To have)
 -Ausstatung des Bootes mit kleinen Icons (Nice To have)
 -bei result-Seite wenn keine Ergebnisse gefunden werden --> auflistung von Booten die noch buchbar sind
--Bei buchung auch eine Mail an XXL baltic Yachting
+
 
 Was noch nicht funktioniert:
 -
@@ -15,3 +15,4 @@ erledigt:
 -Formulare nur abschicken, wenn alle felder ausgefüllt sind sonst error message --> Result seite funktioniert noch nicht
 -Buchungsbestättigung per Mail
 -footer bottom fixed
+-Bei buchung auch eine Mail an XXL baltic Yachting
