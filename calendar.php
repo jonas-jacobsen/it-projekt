@@ -58,7 +58,12 @@ $row = mysqli_fetch_array($result);
 <div>
 <?php echo $row ?>
 </div>
+<div>
+    <?php
 
+    ?>
+
+</div>
 <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
     <div class="card">
         <h3 class="card-header" id="monthAndYear"></h3>

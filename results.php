@@ -12,7 +12,6 @@ include("components/navbar.php");
 $typ = $_GET['typ'];
 $anzPersonenBuchung = $_GET['anzPersonen'];
 $anzKajueten = $_GET['anzKajueten'];
-$preis = $_GET['preisHS'];
 $ausleihDatum = $_GET['reservation'];
 
 
@@ -206,6 +205,15 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
 
             while ($row = mysqli_fetch_array($result)) {
 
+                /* Preis aufgrund von Haupt oder Nebensaison bestimmen*/
+                $aktuellerMonat = date("m") ;
+                if($aktuellerMonat < 6 || $aktuellerMonat > 10){
+                    $preisProTag = $row['preisNS'];
+                } else {
+                    $preisProTag = $row['preisHS'];
+                }
+                /*End Preisermittlung HS/NS*/
+
                 if ($_GET["anzPersonen"] != "" && $_GET["reservation"] != "") {
                     $abschicken = "booking.php";
                     $input = ' <input name="ausleihdatum" type="hidden" value=" ' . $_GET[reservation] . '"><input name="id" type="hidden" value="' . $row[id] . '" ><input name="anzPersonenBuchung" type="hidden" value="' . $_GET[anzPersonen] . '">';
@@ -240,7 +248,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6"><p><span class="panel-type">Preis:</span></p></div>
-                                    <div class="col-xs-6"><p> ' . $row['preisHS'] . '&euro; pro Tag</p></div>
+                                    <div class="col-xs-6"><p> ' . $preisProTag . '&euro; pro Tag</p></div>
                                 </div>
                             </div>                
                             <div class="col-md-6">                    

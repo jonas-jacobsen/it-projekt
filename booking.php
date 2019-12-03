@@ -19,7 +19,15 @@ $typ = $row['typ'];
 $anzPersonen = $row['anzPersonen'];
 $anzKajueten = $row['anzKajueten'];
 $length = $row['length'];
-$preis = $row['preisHS'];
+
+/* Preis aufgrund von Haupt oder Nebensaison bestimmen*/
+$aktuellerMonat = date("m") ;
+if($aktuellerMonat < 6 || $aktuellerMonat > 10){
+    $preis = $row["preisNS"];
+} else {
+    $preis = $row["preisNS"];
+}
+/*End Preisermittlung HS/NS*/
 
 /*auswahl id der letzen Buchung*/
 $sql2 = "SELECT MAX(id) AS id FROM Buchungen";
