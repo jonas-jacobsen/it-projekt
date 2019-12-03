@@ -49,6 +49,7 @@ function seDay($begin, $end, $format, $sep)
     else
         return $second - $first;
 }
+
 $gesamtTage = seDay($anfangsDatum, $endDatum, "dmY", ".") + 1;
 $gesamtPreis = $gesamtTage * $preis;
 
@@ -66,6 +67,102 @@ $endDatumDB = $endDatum;
     <form class="needs-validation" action="confirmation.php" method="post">
         <div class="row">
             <div class="col-md-8">
+
+                <div class="headerBooking">
+                    <h3>Segelyacht Sally Baujahr 2006</h3>
+                    <p class="schiffsname">Bavaria 30 Cruiser (2Cab)</p>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                        ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
+                        dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+                        sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                        invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                        justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+                        ipsum dolor sit amet.</p>
+                    <div class="headerBooking1">
+                        <h4>Folgende Extras und Leistungen sind im Preis enthalten</h4>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p><img src="assets/icons/gas-bottle.svg" width="15" height="20" > Gasflasche</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p><img src="assets/icons/pillow.svg" width="15" height="20" > Cockpitkissen</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p><img src="assets/icons/inflatable-boat.svg" width="15" height="20" > Beiboot</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p><img src="assets/icons/life-insurance.svg" width="15" height="20" > Yachtversicherung</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p><img src="assets/icons/cleaning.svg" width="15" height="20" > Endreinigung</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="headerBooking2">
+                        <h4>Folgende Extras können noch hinzugebucht werden</h4>
+                        <small>Bitte schreibe deine gewünschten Extras in des "Besonderer Wünsche" Feld</small>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p>Handtücher</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p>&euro; 17,00 / Person</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p>Kaskoversicherung</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p>&euro; 295,00 / Woche</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p>Außenbordmotor</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p>&euro; 145,00 / Woche</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <p>Skipper</p>
+                            </div>
+                            <div class="col-xs-4">
+                                <p>&euro; 274,00 / Tag</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                </div>
+
                 <h4>Deine Daten</h4>
                 <div class="form-group">
                     <label for="validationCustom01">Vor- und Nachname</label>
@@ -240,7 +337,6 @@ $endDatumDB = $endDatum;
         </div>
     </form>
     <!--Form validieren -->
-    <hr>
 </div>
 <script>
     $(document).ready(function () {

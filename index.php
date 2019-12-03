@@ -85,9 +85,7 @@ if (isset($_POST['ortDerAusleihe'])) {
         </div>
         <button type="submit" id="submitOne" class="btn btn-primary">   <i class="glyphicon glyphicon-search"></i>   </button>
     </form>
-
 </div>
-
 <?php
 include("components/footerIndex.php");
 ?>

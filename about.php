@@ -23,31 +23,6 @@ include("components/navbar.php");
         </div>
     </div>
     <div class="container">
-        <!-- Beispiel-Zeile von Spalten -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Buchen</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                    mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="index.php" role="button">Details anschauen &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Geführte Törns</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                    mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">Details anschauen &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Dritter Punkt</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                    ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-default" href="#" role="button">Details anschauen &raquo;</a></p>
-            </div>
-        </div>
-        <hr>
         <h2>Wer wir sind</h2>
 
         <div class="row">
@@ -84,6 +59,31 @@ include("components/navbar.php");
                 </div>
             </div>
         </div>
+        <hr>
+        <!-- Beispiel-Zeile von Spalten -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Buchen</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
+                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
+                    mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="index.php" role="button">Details anschauen &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Geführte Törns</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
+                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
+                    mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#" role="button">Details anschauen &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Dritter Punkt</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
+                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+                    ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-default" href="#" role="button">Details anschauen &raquo;</a></p>
+            </div>
+        </div>
 
         <hr id="kontaktformular">
 
@@ -108,8 +108,9 @@ include("components/navbar.php");
                           placeholder="Schreibe hier was du uns gerne Mitteilen würdest" required="required"></textarea>
             </div>
             <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required>
-            <label class="form-check-label" for="invalidCheck29">Mit abschicken deiner Anfrage stimmst du zu, dass wir deine Emailadresse abspeichern um dir Antworten zu können</label><br>
+            <label class="form-check-label" for="invalidCheck29">Mit abschicken deiner Anfrage stimmst du unseren AGB's zu*</label><br>
             <button type="submit" id="submit" class="btn btn-primary">Abschicken</button>
+            <p>*Mit abschließen deiner Buchung und so weiter und so fort...</p>
         </form>
         <hr>
 
@@ -117,3 +118,4 @@ include("components/navbar.php");
 <?php
 include("components/footer.php");
 ?>
+

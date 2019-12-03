@@ -222,7 +222,7 @@ a.navbar-brand {
         border-color: #337ab7;
         text-shadow: 0.5px 0.5px 1px #777;
         font-weight: 100;
-        color: #ffffff;
+        color: #555;
         font-size: 18px;
     }
 }
@@ -319,6 +319,26 @@ a.navbar-brand {
     width: 100%;
 }
 
+.panelUnten {
+    margin-top: 15px;
+}
+
+.flex-container {
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    list-style: none;
+    display: flex;
+    text-align: center;
+}
+.space-between {
+    justify-content: space-between;
+}
+
+.schiffsname {
+    color: #0eaac0;
+}
+
 /*Searchbar*/
 #searchbar {
     text-align: center;
@@ -347,6 +367,17 @@ a.navbar-brand {
     background-color: #ffffff;
 }
 
+/*booking*/
+.headerBooking .glyphicon-ok:before {
+    color: green;
+}
+.headerBooking1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.col-md-4 label, .form-group label {
+    font-weight: 400;
+}
 /*yourbooking*/
 .platzhalter {
     height: 25em;

@@ -1,6 +1,10 @@
+-Preis HS NS noch aufschreiben
 -Verfügbarkeitstabelle (Nice To have)
 -Ausstatung des Bootes mit kleinen Icons (Nice To have)
--bei result-Seite wenn keine Ergebnisse gefunden werden --> auflistung von Booten die noch buchbar sind
+-Bei result-Seite wenn keine Ergebnisse gefunden werden --> auflistung von Booten die noch buchbar sind (nice to have)
+-Telefonbutton auf Erfahren Sie mehr Seite noch kein Link
+-Bootstypen alle anzeigen lassen
+-Bei "Kajuten" keine Angabe
 
 
 Was noch nicht funktioniert:
@@ -13,6 +17,6 @@ erledigt:
 -bookingseite auswahl kreditkarte --> bei confirmation wird trotzdem überweisung angezeigt
 -Panel Leere Felder Satz besser gestallten
 -Formulare nur abschicken, wenn alle felder ausgefüllt sind sonst error message --> Result seite funktioniert noch nicht
--Buchungsbestättigung per Mail
--footer bottom fixed
--Bei buchung auch eine Mail an XXL baltic Yachting
+-Buchungsbestätigung per Mail
+-Footer bottom fixed
+-Bei Buchung auch eine Mail an XXL baltic Yachting
