@@ -74,6 +74,7 @@ if (isset($_POST['ortDerAusleihe'])) {
         <div class="form-group">
             <div class="form-group">
                 <select name="typ" class="form-control" id="exampleFormControlSelect1">
+                    <option>Alle anzeigen</option>
                     <option>Yacht</option>
                     <option>Jolle</option>
                     <option>Windjammer</option>

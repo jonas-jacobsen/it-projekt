@@ -164,7 +164,9 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
 
         <?php
 
-        if ($anzPersonenBuchung == "" && $anzKajueten == "") {
+        if ($typ == "Alle anzeigen") {
+            $sql = "SELECT * FROM Boote ORDER BY typ";
+        } elseif ($anzPersonenBuchung == "" && $anzKajueten == "") {
             $sql = "SELECT * FROM Boote WHERE typ = '$typ'";
         } elseif ($anzPersonenBuchung != "" && $anzKajueten == "") {
             $sql = "SELECT * FROM Boote WHERE typ = '$typ' AND anzPersonen >= '$anzPersonenBuchung'";
@@ -205,6 +207,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
 
             while ($row = mysqli_fetch_array($result)) {
 
+                $schlafplatz = floatval($row["anzKajueten"])*2;
                 /* Preis aufgrund von Haupt oder Nebensaison bestimmen*/
                 $aktuellerMonat = date("m") ;
                 if($aktuellerMonat < 6 || $aktuellerMonat > 10){
@@ -224,65 +227,67 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                     $button = '<button type="submit" id="buttonID" disabled="disabled" value="' . $row['id'] . '" class="btn btn-primary">Anfragen</button>';
                 }
                 echo '
-                 <div id="panel1" class="panel panel-default">
-                <div class="panel-heading">' . $row['bootname'] . '</div>
+                <div id="panel1" class="panel panel-default">
+                <div class="panel-heading"></div>
                 <div class="user"><img class="img-circle img-fit" width: 180px height="180" src="' . $row['bildId'] . '"></div>
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-xs-6"><p><span class="panel-type">Bootstyp: </span></p></div>
-                                    <div class="col-xs-6"><p>' . $row['typ'] . ' </p></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6"><p><span class="panel-type">Anzahl max. Personen:</span></p></div>
-                                    <div class="col-xs-6"><p>' . $row['anzPersonen'] . ' </p></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6"><p><span class="panel-type">Anzahl der Kajüten:</span></p></div>
-                                    <div class="col-xs-6"><p>' . $row['anzKajueten'] . ' </p></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6"><p><span class="panel-type">Länge:</span></p></div>
-                                    <div class="col-xs-6"><p>' . $row['length'] . ' m</p></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6"><p><span class="panel-type">Preis:</span></p></div>
-                                    <div class="col-xs-6"><p> ' . $preisProTag . '&euro; pro Tag</p></div>
-                                </div>
-                            </div>                
-                            <div class="col-md-6">                    
-                                <form action="' . $abschicken . '" class="form-horizontal" method="get">
-                                    <fieldset>
-                                        <div class="control-group">                 
-                                            <div class="controls">
-                                                <div class="input-prepend">
-                                                    <h3>Dein Ausgewähltes Datum: </h3>
-                                                    ' . $ausgabe . '
-                                                    ' . $ausgabePers . '
-                                                    ' . $input . '
-                                                    ' . $button . '                   
+                        <div>
+                            <h3>' . $row["bootname"] . '</h3>
+                            <p class="schiffsname">' . $row["bootModell"] . '</p>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        </div>
+                        <hr>
+                        <div class="panelUnten">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-xs-6"><p><span class="panel-type">Bootstyp: </span></p></div>
+                                        <div class="col-xs-6"><p>' . $row['typ'] . ' </p></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6"><p><span class="panel-type">Anzahl max. Personen:</span></p></div>
+                                        <div class="col-xs-6"><p>' . $row['anzPersonen'] . ' </p></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6"><p><span class="panel-type">Anzahl der Kajüten:</span></p></div>
+                                        <div class="col-xs-6"><p>' . $row['anzKajueten'] . ' </p></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6"><p><span class="panel-type">Länge:</span></p></div>
+                                        <div class="col-xs-6"><p>' . $row['length'] . ' m</p></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6"><p><span class="panel-type">Preis:</span></p></div>
+                                        <div class="col-xs-6"><p> &euro; ' . $preisProTag . ' / Tag</p></div>
+                                    </div>  
+                                </div>                
+                                <div class="col-md-6">      
+                                    <form action="' . $abschicken . '" class="form-horizontal" method="get">
+                                        <fieldset>
+                                            <div class="control-group">                 
+                                                <div class="controls">
+                                                    <div class="input-prepend">
+                                                        <h3>Dein Ausgewähltes Datum: </h3>
+                                                        ' . $ausgabe . '
+                                                        ' . $ausgabePers . '
+                                                        ' . $input . '
+                                                        ' . $button . '                   
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </fieldset>
-                                </form>
-                            </div>                 
+                                        </fieldset>
+                                    </form>     
+                                </div>                                          
+                            </div>
+                        <hr> 
                         </div>
-                        <div class="panelUnten">
-                            <div>
-                                <h3>Segelyacht Sally Baujahr 2006</h3>
-                                <p class="schiffsname">Bavaria 30 Cruiser (2Cab)</p>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                            </div>
-                             <div>
-                                <ul class="flex-container space-between">
-                                  <li class="flex-container space-between"><p><svg width="22" height="15" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd"><path fill="#777" fill-rule="nonzero" d="M2.933 9h-.517c-.303-1.137-.538-1.774-.704-1.91-.366-.302-2.16-.763-.555-2.808C2.76 2.236 5.96 0 10.887 0c4.925 0 8.631 2.143 10.061 4.282 1.43 2.138-.333 2.391-.643 2.819-.138.19-.33.824-.578 1.899H2.933zm16.338 2c-.916 2.436-3.111 3.958-8.391 4-5.318.04-7.552-2.008-8.29-4h16.68z"></path> <path fill="#FFF" d="M7.648 6.01c-.065 0-.11-.028-.134-.085-.025-.057-.017-.104.024-.142l.829-.775a.137.137 0 0 1 .098-.034c.04 0 .073.011.097.034l.829.775c.04.038.049.085.024.142-.024.057-.069.086-.134.086h-.426c.113.296.345.543.694.74.317.175.67.285 1.06.33V4.917h-.633a.146.146 0 0 1-.104-.04.128.128 0 0 1-.042-.097v-.456c0-.038.014-.07.042-.096a.146.146 0 0 1 .104-.04h.634V4.13a1.154 1.154 0 0 1-.56-.399 1.02 1.02 0 0 1-.22-.638c0-.304.116-.564.347-.78.232-.217.51-.321.835-.314.325.008.6.118.823.33.223.213.335.468.335.764 0 .236-.073.448-.22.638-.145.19-.332.323-.56.399v.057h.634c.04 0 .075.013.104.04a.128.128 0 0 1 .042.096v.456c0 .038-.014.07-.042.097a.146.146 0 0 1-.104.04h-.634V7.08c.39-.045.744-.155 1.06-.33.35-.197.582-.444.695-.74h-.426c-.065 0-.11-.029-.134-.086-.025-.057-.017-.104.024-.142l.829-.775a.137.137 0 0 1 .097-.034c.041 0 .074.011.098.034l.829.775c.04.038.049.085.024.142-.024.057-.069.086-.134.086h-.39c-.09.372-.288.702-.597.99-.293.267-.65.472-1.073.616a3.973 3.973 0 0 1-2.584 0 3.026 3.026 0 0 1-1.073-.615 1.974 1.974 0 0 1-.597-.991h-.39zM11 2.73a.388.388 0 0 0-.274.108.34.34 0 0 0 0 .512.388.388 0 0 0 .274.109.388.388 0 0 0 .274-.109.34.34 0 0 0 0-.512A.388.388 0 0 0 11 2.73z"></path></g></svg><br>Skipper auf Anfrage</p></li>
-                                  <li class="flex-container space-between"><p><svg aria-hidden="true" role="img" width="22" height="15" viewBox="0 0 640 512" class="fa"><path fill="currentColor" d="M624 448h-80V113.45C544 86.19 522.47 64 496 64H384v64h96v384h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM312.24 1.01l-192 49.74C105.99 54.44 96 67.7 96 82.92V448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h336V33.18c0-21.58-19.56-37.41-39.76-32.17zM264 288c-13.25 0-24-14.33-24-32s10.75-32 24-32 24 14.33 24 32-10.75 32-24 32z"></path></svg><br>text</p></li>
-                                  <li class="flex-container space-between"><p><span class="glyphicon glyphicon-search" aria-hidden="true"></span><br>text</p></li>
-                                  <li class="flex-container space-between"><p><i class="fas fa-bed"></i><br>text</p></li>
-                                </ul>
-                            </div>
+                        <div>
+                            <ul class="flex-container space-between">
+                                <li class="flex-container space-between"><p><svg width="22" height="15" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd"><path fill="#777" fill-rule="nonzero" d="M2.933 9h-.517c-.303-1.137-.538-1.774-.704-1.91-.366-.302-2.16-.763-.555-2.808C2.76 2.236 5.96 0 10.887 0c4.925 0 8.631 2.143 10.061 4.282 1.43 2.138-.333 2.391-.643 2.819-.138.19-.33.824-.578 1.899H2.933zm16.338 2c-.916 2.436-3.111 3.958-8.391 4-5.318.04-7.552-2.008-8.29-4h16.68z"></path> <path fill="#FFF" d="M7.648 6.01c-.065 0-.11-.028-.134-.085-.025-.057-.017-.104.024-.142l.829-.775a.137.137 0 0 1 .098-.034c.04 0 .073.011.097.034l.829.775c.04.038.049.085.024.142-.024.057-.069.086-.134.086h-.426c.113.296.345.543.694.74.317.175.67.285 1.06.33V4.917h-.633a.146.146 0 0 1-.104-.04.128.128 0 0 1-.042-.097v-.456c0-.038.014-.07.042-.096a.146.146 0 0 1 .104-.04h.634V4.13a1.154 1.154 0 0 1-.56-.399 1.02 1.02 0 0 1-.22-.638c0-.304.116-.564.347-.78.232-.217.51-.321.835-.314.325.008.6.118.823.33.223.213.335.468.335.764 0 .236-.073.448-.22.638-.145.19-.332.323-.56.399v.057h.634c.04 0 .075.013.104.04a.128.128 0 0 1 .042.096v.456c0 .038-.014.07-.042.097a.146.146 0 0 1-.104.04h-.634V7.08c.39-.045.744-.155 1.06-.33.35-.197.582-.444.695-.74h-.426c-.065 0-.11-.029-.134-.086-.025-.057-.017-.104.024-.142l.829-.775a.137.137 0 0 1 .097-.034c.041 0 .074.011.098.034l.829.775c.04.038.049.085.024.142-.024.057-.069.086-.134.086h-.39c-.09.372-.288.702-.597.99-.293.267-.65.472-1.073.616a3.973 3.973 0 0 1-2.584 0 3.026 3.026 0 0 1-1.073-.615 1.974 1.974 0 0 1-.597-.991h-.39zM11 2.73a.388.388 0 0 0-.274.108.34.34 0 0 0 0 .512.388.388 0 0 0 .274.109.388.388 0 0 0 .274-.109.34.34 0 0 0 0-.512A.388.388 0 0 0 11 2.73z"></path></g></svg><br>Skipper auf Anfrage</p></li>
+                                <li class="flex-container space-between"><p><img src="assets/icons/multiple-users-silhouette.svg" width="22" height="15" ><br>Max. ' . $row["anzPersonen"] . ' Personen</p></li>
+                                <li class="flex-container space-between"><p><img src="assets/icons/calendar.svg" width="22" height="15" ><br>Min. Mietdauer 1 Tag</p></li>
+                                <li class="flex-container space-between"><p><img src="assets/icons/bed.svg" width="22" height="15" ><br>' . $schlafplatz . ' Schlafplätze </p></li>
+                            </ul>
                         </div>
                     </div>
                 </div>';

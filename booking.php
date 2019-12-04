@@ -3,8 +3,8 @@ include("components/config.php");
 include("components/header.php");
 include("components/navbar.php");
 
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', 'On');
+/*error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', 'On');*/
 
 $auswahlBoot = $_GET['id'];
 $anzPersonenBuchung = $_GET['anzPersonenBuchung'];
@@ -14,6 +14,8 @@ $sql = "SELECT * FROM Boote WHERE id = '$auswahlBoot'";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_array($result);
 
+$bootName = $row["bootname"];
+$bootModell = $row["bootModell"];
 $bildId = $row['bildId'];
 $typ = $row['typ'];
 $anzPersonen = $row['anzPersonen'];
@@ -21,8 +23,8 @@ $anzKajueten = $row['anzKajueten'];
 $length = $row['length'];
 
 /* Preis aufgrund von Haupt oder Nebensaison bestimmen*/
-$aktuellerMonat = date("m") ;
-if($aktuellerMonat < 6 || $aktuellerMonat > 10){
+$aktuellerMonat = date("m");
+if ($aktuellerMonat < 6 || $aktuellerMonat > 10) {
     $preis = $row["preisNS"];
 } else {
     $preis = $row["preisNS"];
@@ -64,10 +66,10 @@ $gesamtPreis = $gesamtTage * $preis;
 $anfangsDatumDB = $anfangsDatum;
 $endDatumDB = $endDatum;
 ?>
-
-<div class="jumbotron" style="background-image: url('assets/pics/yachthafen.jpg'); background-size: cover">
+<div class="jumbotron"
+     style="background-image: url('assets/pics/yachthafen.jpg'); background-size: cover; height:300px">
     <div class="container">
-        <h1><?php echo $row['bootname']; ?></h1>
+        <h1>Buchen</h1>
         <p></p>
     </div>
 </div>
@@ -77,8 +79,8 @@ $endDatumDB = $endDatum;
             <div class="col-md-8">
 
                 <div class="headerBooking">
-                    <h3>Segelyacht Sally Baujahr 2006</h3>
-                    <p class="schiffsname">Bavaria 30 Cruiser (2Cab)</p>
+                    <h3><?php echo $row['bootname']; ?></h3>
+                    <p class="schiffsname"><?php echo $row['bootModell']; ?></p>
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
                         ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
                         dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
@@ -86,11 +88,54 @@ $endDatumDB = $endDatum;
                         invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
                         justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
                         ipsum dolor sit amet.</p>
+
+                    <div class="bilderAzeigen">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Positionsanzeiger -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Verpackung für die Elemente -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img src="<?php echo $bildId ?>" alt="...">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="<?php echo $bildId ?>" alt="...">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="<?php echo $bildId ?>" alt="...">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Schalter -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button"
+                               data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Zurück</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button"
+                               data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Weiter</span>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
                     <div class="headerBooking1">
                         <h4>Folgende Extras und Leistungen sind im Preis enthalten</h4>
                         <div class="row">
                             <div class="col-xs-4">
-                                <p><img src="assets/icons/gas-bottle.svg" width="15" height="20" > Gasflasche</p>
+                                <p><img src="assets/icons/gas-bottle.svg" width="15" height="20"> Gasflasche</p>
                             </div>
                             <div class="col-xs-4">
                                 <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
@@ -99,7 +144,7 @@ $endDatumDB = $endDatum;
                         </div>
                         <div class="row">
                             <div class="col-xs-4">
-                                <p><img src="assets/icons/pillow.svg" width="15" height="20" > Cockpitkissen</p>
+                                <p><img src="assets/icons/pillow.svg" width="15" height="20"> Cockpitkissen</p>
                             </div>
                             <div class="col-xs-4">
                                 <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
@@ -107,7 +152,7 @@ $endDatumDB = $endDatum;
                         </div>
                         <div class="row">
                             <div class="col-xs-4">
-                                <p><img src="assets/icons/inflatable-boat.svg" width="15" height="20" > Beiboot</p>
+                                <p><img src="assets/icons/inflatable-boat.svg" width="15" height="20"> Beiboot</p>
                             </div>
                             <div class="col-xs-4">
                                 <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
@@ -115,7 +160,8 @@ $endDatumDB = $endDatum;
                         </div>
                         <div class="row">
                             <div class="col-xs-4">
-                                <p><img src="assets/icons/life-insurance.svg" width="15" height="20" > Yachtversicherung</p>
+                                <p><img src="assets/icons/life-insurance.svg" width="15" height="20"> Yachtversicherung
+                                </p>
                             </div>
                             <div class="col-xs-4">
                                 <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
@@ -123,7 +169,7 @@ $endDatumDB = $endDatum;
                         </div>
                         <div class="row">
                             <div class="col-xs-4">
-                                <p><img src="assets/icons/cleaning.svg" width="15" height="20" > Endreinigung</p>
+                                <p><img src="assets/icons/cleaning.svg" width="15" height="20"> Endreinigung</p>
                             </div>
                             <div class="col-xs-4">
                                 <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
@@ -168,7 +214,6 @@ $endDatumDB = $endDatum;
                         </div>
                     </div>
                     <hr>
-
                 </div>
 
                 <h4>Deine Daten</h4>
@@ -280,67 +325,69 @@ $endDatumDB = $endDatum;
                 <input type="hidden" name="bootname" value="<?php echo $row['bootname'] ?>">
             </div>
             <!--Auswahlbox rechte Seite -->
-            <div class="col-md-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Deine Auswahl</span>
-                    <span class="badge badge-secondary badge-pill"><?php echo $row['bootname'] ?></span>
-                </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Ausleihdatum</h6>
-                            <small class="text-muted"></small>
-                        </div>
-                        <span class="text-muted"><?php echo $ausleihDatum ?> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Anzahl der Tage</h6>
-                            <small class="text-muted"></small>
-                        </div>
-                        <span class="text-muted"><?php echo $gesamtTage ?> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Bootstyp</h6>
-                            <small class="text-muted"></small>
-                        </div>
-                        <span class="text-muted"><?php echo $typ ?> </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Anzahl der Personen</h6>
-                            <small class="text-muted"></small>
-                        </div>
-                        <span class="text-muted"><?php if ($anzPersonenBuchung == "") {
-                                echo "Keine Anzahl eingegeben";
-                            } else {
-                                echo $anzPersonenBuchung;
-                            } ?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Anzahl der Kajüten</h6>
-                            <small class="text-muted"></small>
-                        </div>
-                        <span class="text-muted"><?php echo $anzKajueten ?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Preis pro Tag</h6>
-                            <small class="text-muted">Die Preise variieren zu Saisonzeiten</small>
-                        </div>
-                        <span class="text-muted"><?php echo $preis ?></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Gesamt (EURO)</span>
-                        <strong><?php echo $gesamtPreis ?>&euro;</strong>
-                    </li>
-                </ul>
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required="required">
-                <label class="form-check-label" for="invalidCheck29">Agree to terms and conditions*</label><br>
-                <button type="submit" name="submit" id="buttonID" class="btn btn-primary">Buchen</button>
-                <p>*Mit abschließen deiner Buchung und so weiter und so fort...</p>
+            <div class="sidebar">
+                <div class="col-md-4">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Deine Auswahl</span>
+                        <span class="badge badge-secondary badge-pill"><?php echo $row['bootname'] ?></span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Ausleihdatum</h6>
+                                <small class="text-muted"></small>
+                            </div>
+                            <span class="text-muted"><?php echo $ausleihDatum ?> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Anzahl der Tage</h6>
+                                <small class="text-muted"></small>
+                            </div>
+                            <span class="text-muted"><?php echo $gesamtTage ?> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Bootstyp</h6>
+                                <small class="text-muted"></small>
+                            </div>
+                            <span class="text-muted"><?php echo $typ ?> </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Anzahl der Personen</h6>
+                                <small class="text-muted"></small>
+                            </div>
+                            <span class="text-muted"><?php if ($anzPersonenBuchung == "") {
+                                    echo "Keine Anzahl eingegeben";
+                                } else {
+                                    echo $anzPersonenBuchung;
+                                } ?></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Anzahl der Kajüten</h6>
+                                <small class="text-muted"></small>
+                            </div>
+                            <span class="text-muted"><?php echo $anzKajueten ?></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Preis pro Tag</h6>
+                                <small class="text-muted">Die Preise variieren zu Saisonzeiten</small>
+                            </div>
+                            <span class="text-muted"><?php echo $preis ?></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Gesamt</span>
+                            <strong>&euro; <?php echo $gesamtPreis ?></strong>
+                        </li>
+                    </ul>
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required="required">
+                    <label class="form-check-label" for="invalidCheck29">Agree to terms and conditions*</label><br>
+                    <button type="submit" name="submit" id="buttonID" class="btn btn-primary">Buchen</button>
+                    <p>*Mit abschließen deiner Buchung und so weiter und so fort...</p>
+                </div>
             </div>
         </div>
     </form>

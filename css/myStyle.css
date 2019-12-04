@@ -222,13 +222,21 @@ a.navbar-brand {
         border-color: #337ab7;
         text-shadow: 0.5px 0.5px 1px #777;
         font-weight: 100;
-        color: #555;
+        color: #ffffff;
         font-size: 18px;
     }
+    /* The sticky */
+    .sidebar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 60px;
+        margin-bottom: 600px;
+    }
+
 }
 @media (max-width: 767px) {
     .register h2 {
-        color: white;
+        color: white;;
         font-size: 35px;
     }
     #footer .titelschrift {
