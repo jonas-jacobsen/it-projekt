@@ -1,9 +1,13 @@
 <?php
 include("components/config.php");
 $buchungsnummer = $_GET['buchungsnummer'];
+$sql = "SELECT * FROM Buchungen WHERE buchungsNr = '$buchungsnummer'";
+$result = mysqli_query($connect, $sql);
+$row = mysqli_fetch_array($result);
+$aktuelesDate = Date("d.m.Y");
 
 if ($_GET['stornieren'] == '1') {
-    $sql3 = "INSERT INTO `Stornierungen` (`id`, `buchungsNr`, `name`, `anfangsDatum`, `endDatum`, `stornierungsDatum`, `email`) VALUES ('', '$buchungsnummer', '$row[persName]', '$row[startDatum]', '$row[endDatum]', 'test', 'test@test.de');";
+    $sql3 = "INSERT INTO `Stornierungen` (`id`, `buchungsNr`, `name`, `anfangsDatum`, `endDatum`, `stornierungsDatum`, `email`) VALUES ('', '$buchungsnummer', '$row[persName]', '$row[startDatum]', '$row[endDatum]', '$aktuelesDate', '$row[emailadresse]');";
     $result = mysqli_query($connect, $sql3);
 
     $sql4 = "DELETE FROM `Buchungen` WHERE `buchungsNr` = '$buchungsnummer'";
