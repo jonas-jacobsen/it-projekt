@@ -108,9 +108,9 @@ include("components/navbar.php");
                           placeholder="Schreibe hier was du uns gerne Mitteilen würdest" required="required"></textarea>
             </div>
             <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required>
-            <label class="form-check-label" for="invalidCheck29">Mit abschicken deiner Anfrage stimmst du unseren AGB's zu*</label><br>
-            <button type="submit" id="submit" class="btn btn-primary">Abschicken</button>
-            <p>*Mit abschließen deiner Buchung und so weiter und so fort...</p>
+            <label style="font-weight: 400" class="form-check-label" for="invalidCheck29">Mit abschicken deiner Anfrage stimmst du unseren AGB's zu*</label><br>
+            <button type="submit" id="submit" class="btn btn-primary">Abschicken</button><br>
+            <small>*Mit abschließen deiner Buchung und so weiter und so fort...</small>
         </form>
         <hr>
 

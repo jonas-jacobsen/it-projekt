@@ -5,6 +5,9 @@ html {
 h1, h2, h3, h4, h5, p, a {
     font-weight: 200 !important;
 }
+p {
+    font-size: initial;
+}
 
 body {
     background: none !important;
@@ -205,11 +208,11 @@ a.navbar-brand {
 .register h2 {
     color: white;
     font-size: 50px;
-    text-shadow: 1.0px 1.0px 1px #777;
+    text-shadow: 1.0px 1.0px 3px #777;
 }
 .register p {
     font-size: 18px;
-    text-shadow: 1.0px 1.0px 1px #777;
+    text-shadow: 1.0px 1.0px 3px #777;
 }
 .register .btn {
     width: 75px;
@@ -283,7 +286,7 @@ a.navbar-brand {
 }
 
 .panel-type {
-    font-weight: 400;
+    font-weight: 200;
 }
 .panel-default {
     -webkit-transition: opacity 1s ease-in-out;

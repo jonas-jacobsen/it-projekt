@@ -36,7 +36,7 @@ $sql2 = "SELECT MAX(id) AS id FROM Buchungen";
 $result2 = mysqli_query($connect, $sql2);
 $row2 = mysqli_fetch_array($result2);
 $letzteBuchungsId = $row2['id'] + 1;
-$buchungsNr = "$anzPersonenBuchung" . "#3928#" . $letzteBuchungsId;
+$buchungsNr = "$anzPersonenBuchung" . "3928" . $letzteBuchungsId;
 
 /*String Kalenderdatum von bis umwandeln in zwei Strings um Tage auszurechnen */
 list($anfangsDatum, $endDatum) = explode("-", $ausleihDatum);
@@ -65,6 +65,13 @@ $gesamtPreis = $gesamtTage * $preis;
 
 $anfangsDatumDB = $anfangsDatum;
 $endDatumDB = $endDatum;
+
+/*Entscheidung über Glyphicon*/
+if($row["typ"] == "Yacht" || $row["typ"] == "Windjammer" || $row["typ"] == "Mehrrumpfboot") {
+    $glyph = "<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\">";
+}else{
+    $glyph = "<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\">";
+}
 ?>
 <div class="jumbotron"
      style="background-image: url('assets/pics/yachthafen.jpg'); background-size: cover; height:300px">
@@ -130,7 +137,7 @@ $endDatumDB = $endDatum;
                             </a>
                         </div>
                     </div>
-                    <hr>
+
                     <div class="headerBooking1">
                         <h4>Folgende Extras und Leistungen sind im Preis enthalten</h4>
                         <div class="row">
@@ -138,7 +145,7 @@ $endDatumDB = $endDatum;
                                 <p><img src="assets/icons/gas-bottle.svg" width="15" height="20"> Gasflasche</p>
                             </div>
                             <div class="col-xs-4">
-                                <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                <p><?php echo $glyph ?></span></span>
                                 </p>
                             </div>
                         </div>
@@ -155,7 +162,7 @@ $endDatumDB = $endDatum;
                                 <p><img src="assets/icons/inflatable-boat.svg" width="15" height="20"> Beiboot</p>
                             </div>
                             <div class="col-xs-4">
-                                <p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></p>
+                                <p><?php echo $glyph ?></span></p>
                             </div>
                         </div>
                         <div class="row">
@@ -385,14 +392,15 @@ $endDatumDB = $endDatum;
                     </ul>
                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required="required">
                     <label class="form-check-label" for="invalidCheck29">Agree to terms and conditions*</label><br>
-                    <button type="submit" name="submit" id="buttonID" class="btn btn-primary">Buchen</button>
-                    <p>*Mit abschließen deiner Buchung und so weiter und so fort...</p>
+                    <button type="submit" name="submit" id="buttonID" class="btn btn-primary">Buchen</button><br>
+                    <small>*Mit abschließen deiner Buchung und so weiter und so fort...</small>
                 </div>
             </div>
         </div>
     </form>
     <!--Form validieren -->
 </div>
+<!--script zum anzeigen von Kredidkarten informationen oder Ueberweisung -->
 <script>
     $(document).ready(function () {
         $('input[type="radio"]').click(function () {
@@ -412,6 +420,3 @@ $endDatumDB = $endDatum;
 <?php
 include("components/footer.php");
 ?>
-
-<!--script zum anzeigen von Kredidkarten informationen oder Ueberweisung -->
-

@@ -3,8 +3,8 @@ include("components/config.php");
 include("components/header.php");
 include("components/navbar.php");
 
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', 'On');
+/*error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', 'On');*/
 
 $sql = "INSERT INTO `Buchungen` (`id`, `buchungsNr`, `bootsId`, `startDatum`, `endDatum`, `gesamtTage`,`anzPersBuchung`, `gesamtPreis`, `emailadresse`, `persName`, `ort`, `plz`, `strasse`, `anschreiben`, `bezahlart`) 
 VALUES (NULL, '$_POST[buchungsNr]', '$_POST[id]', '$_POST[anfangsDatumDB]', '$_POST[endDatumDB]', '$_POST[gesamtTage]', '$_POST[anzPersonenBuchung]',  '$_POST[gesamtPreis]',  '$_POST[email]',  '$_POST[persName]', '$_POST[ort]', '$_POST[plz]', '$_POST[strasse]', '$_POST[anschreiben]', '$_POST[bezahlart]');";
@@ -66,7 +66,7 @@ Gesamtpreis: " . $_POST["gesamtPreis"] . " €
 Du hast folgende Bezahlung ausgewählt: " . $_POST['bezahlart'] . "
 ".$ueberweisungstext."
  
-Falls du deine Buchung stornieren moechtest, folge bitte den Link: https://come-prima.de/Projekte/it-projektmanagement/yourbooking.php
+Falls du deine Buchung stornieren moechtest, folge bitte den Link: https://come-prima.de/Projekte/it-projektmanagement/yourbooking.php?buchungsnummer=".$_POST['buchungsNr']."
 
 Vielen Spaß auf deiner Reise wünscht dir das Team der XXL Baltic Yachting";
 $headers .= "From: balticyachting@outlook.de";

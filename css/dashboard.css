@@ -44,6 +44,7 @@ body {
 }
 #sidebar-wrapper label {
     font-weight: 300;
+    margin-left: 15px;
 }
 
 #wrapper.toggled #sidebar-wrapper {
