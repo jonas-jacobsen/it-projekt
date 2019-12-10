@@ -35,6 +35,9 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                         <div class="col-sm-10">
                             <select name="typ" class="form-control" id="typ">
                                 <option><?php echo $typ ?></option>
+                                <?php if ($typ != "Alle anzeigen") {
+                                    echo '<option>Alle anzeigen</option>';
+                                } ?>
                                 <?php if ($typ != "Yacht") {
                                     echo '<option>Yacht</option>';
                                 } ?>
@@ -164,22 +167,35 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
 
         <?php
 
-        if ($typ == "Alle anzeigen") {
+        /*String Kalenderdatum von bis umwandeln in zwei Strings um Tage auszurechnen */
+        list($anfangsDatum, $endDatum) = explode("-", $ausleihDatum);
+        /*Datum in Timestamp umwandeln um später abzugleichen ob das Boot schon gebucht wurde*/
+        $tspmUserAnfangsDatum = strtotime($anfangsDatum);
+        $tspmUserEndDatum = strtotime($endDatum);
+
+        /*SQL-Anfrage bei auswahl des Filters*/
+        if ($typ == "Alle anzeigen" && $anzPersonenBuchung == "" && $anzKajueten == "") {
             $sql = "SELECT * FROM Boote ORDER BY typ";
-        } elseif ($anzPersonenBuchung == "" && $anzKajueten == "") {
+        } elseif ($typ != "Alle anzeigen" && $anzPersonenBuchung == "" && $anzKajueten == "") {
             $sql = "SELECT * FROM Boote WHERE typ = '$typ'";
-        } elseif ($anzPersonenBuchung != "" && $anzKajueten == "") {
+        } elseif ($typ != "Alle anzeigen" && $anzPersonenBuchung != "" && $anzKajueten == "") {
             $sql = "SELECT * FROM Boote WHERE typ = '$typ' AND anzPersonen >= '$anzPersonenBuchung'";
-        } elseif ($anzPersonenBuchung != "" && $anzKajueten != "") {
+        } elseif ($typ != "Alle anzeigen" && $anzPersonenBuchung != "" && $anzKajueten != "") {
             $sql = "SELECT * FROM Boote WHERE typ = '$typ' AND anzPersonen >= '$anzPersonenBuchung' AND anzKajueten >= '$anzKajueten'";
-        } elseif ($anzPersonenBuchung == "" && $anzKajueten != "") {
+        } elseif ($typ != "Alle anzeigen" && $anzPersonenBuchung == "" && $anzKajueten != "") {
             $sql = "SELECT * FROM Boote WHERE typ = '$typ' AND anzKajueten >= '$anzKajueten'";
+        } elseif ($typ = "Alle anzeigen" && $anzPersonenBuchung != "" && $anzKajueten == "") {
+            $sql = "SELECT * FROM Boote WHERE anzPersonen >= '$anzPersonenBuchung'";
+        } elseif ($typ = "Alle anzeigen" && $anzPersonenBuchung != "" && $anzKajueten != "") {
+            $sql = "SELECT * FROM Boote WHERE anzPersonen >= '$anzPersonenBuchung' AND anzKajueten >= '$anzKajueten'";
+        } elseif ($typ = "Alle anzeigen" && $anzPersonenBuchung == "" && $anzKajueten != "") {
+            $sql = "SELECT * FROM Boote WHERE anzKajueten >= '$anzKajueten'";
         }
 
         $result = mysqli_query($connect, $sql);
-        // echo $sql;
+
         if (mysqli_num_rows($result) != null) {
-            showResult($result, $connect);
+            showResult($result, $connect, $tspmUserAnfangsDatum, $tspmUserEndDatum);
         } else {
             echo "<h3>Leider ergab deine Suche keine Ergebnisse</h3>";
             if ($_GET["typ"] == "Jolle") {
@@ -191,8 +207,9 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
             echo '<div class="platzhalter"></div>';
         }
 
+
         /*Funktion um alle boote nacheinander anzuzeigen*/
-        function showResult($result, $connect)
+        function showResult($result, $connect, $tspmUserAnfangsDatum, $tspmUserEndDatum)
         {
             if ($_GET['reservation'] == null) {
                 $ausgabe = '<p class="alertRed">Bitte ein Datum im Filter auswählen</p>';
@@ -207,24 +224,59 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
 
             while ($row = mysqli_fetch_array($result)) {
 
-                $schlafplatz = floatval($row["anzKajueten"])*2;
+                /*Um Herauszufinden ob ein Boot angezeigt werden kann oder schon gebucht wurde, muss die BuchungsDB geladen werden*/
+                $sql1 = "SELECT * From Buchungen WHERE bootsId = $row[id]";
+                $result1 = mysqli_query($connect, $sql1);
+                if (mysqli_num_rows($result1)) {
+                    while ($row1 = mysqli_fetch_array($result1)) {
+                        if ($tspmUserAnfangsDatum == "" && $tspmUserEndDatum == "") {
+                            $IsbootNotBookable = "1";
+                            $bookableText = "";
+                            $isBookableGlyph = "<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>";
+
+                        } else {
+                            if ($tspmUserAnfangsDatum > strtotime($row1['endDatum']) || $tspmUserEndDatum < strtotime($row1['startDatum'])) {
+                                $IsbootNotBookable = "1";
+                                $bookableText = "";
+                                $isBookableGlyph = "<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>";
+                            } else {
+                                $IsbootNotBookable = "0";
+                                $bookableText = "<p class=\"alertRed\">Leider ist das Boot zu deinem gewünschten Datum vermietet</p>";
+                                $isBookableGlyph = "<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>";
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    $IsbootNotBookable = "1";
+                    $bookableText ="";
+                    $isBookableGlyph = "<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>";
+                }
+
+                $schlafplatz = floatval($row["anzKajueten"]) * 2;
                 /* Preis aufgrund von Haupt oder Nebensaison bestimmen*/
-                $aktuellerMonat = date("m") ;
-                if($aktuellerMonat < 6 || $aktuellerMonat > 10){
+                $aktuellerMonat = date("m");
+                if ($aktuellerMonat < 6 || $aktuellerMonat > 10) {
                     $preisProTag = $row['preisNS'];
                 } else {
                     $preisProTag = $row['preisHS'];
                 }
-                /*End Preisermittlung HS/NS*/
 
-                if ($_GET["anzPersonen"] != "" && $_GET["reservation"] != "") {
+                /*Prüfung ob Sbf notwenig ist*/
+                if ($row["sbf"] == "0") {
+                    $needSbf = "Kein SBF notwenig";
+                } else {
+                    $needSbf = "Nur mit SBF mietbar";
+                }
+
+                if ($_GET["anzPersonen"] != "" && $_GET["reservation"] != "" && $IsbootNotBookable == 1) {
                     $abschicken = "booking.php";
                     $input = ' <input name="ausleihdatum" type="hidden" value=" ' . $_GET[reservation] . '"><input name="id" type="hidden" value="' . $row[id] . '" ><input name="anzPersonenBuchung" type="hidden" value="' . $_GET[anzPersonen] . '">';
                     $button = '<button type="submit" id="buttonID" value="' . $row['id'] . '" class="btn btn-primary">Auswählen</button>';
                 } else {
                     $abschicken = "results.php?typ='.$_GET[typ]";
                     $input = '<input name="typ" type="hidden" value="' . $_GET[typ] . '">';
-                    $button = '<button type="submit" id="buttonID" disabled="disabled" value="' . $row['id'] . '" class="btn btn-primary">Anfragen</button>';
+                    $button = '<button type="submit" id="buttonID" disabled="disabled" value="' . $row['id'] . '" class="btn btn-primary">Auswählen</button>';
                 }
                 echo '
                 <div id="panel1" class="panel panel-default">
@@ -267,11 +319,12 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                             <div class="control-group">                 
                                                 <div class="controls">
                                                     <div class="input-prepend">
-                                                        <h3>Dein Ausgewähltes Datum: </h3>
-                                                        ' . $ausgabe . '
+                                                        <h3>Dein Ausgewähltes Datum: </h3>                                                       
+                                                        ' . $ausgabe . ' 
+                                                        ' . $bookableText . '  
                                                         ' . $ausgabePers . '
                                                         ' . $input . '
-                                                        ' . $button . '                   
+                                                        ' . $button . '            
                                                     </div>
                                                 </div>
                                             </div>
@@ -287,6 +340,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                 <li class="flex-container space-between"><p><img src="assets/icons/multiple-users-silhouette.svg" width="22" height="15" ><br>Max. ' . $row["anzPersonen"] . ' Personen</p></li>
                                 <li class="flex-container space-between"><p><img src="assets/icons/calendar.svg" width="22" height="15" ><br>Min. Mietdauer 1 Tag</p></li>
                                 <li class="flex-container space-between"><p><img src="assets/icons/bed.svg" width="22" height="15" ><br>' . $schlafplatz . ' Schlafplätze </p></li>
+                                <li class="flex-container space-between"><p><img src="assets/icons/fahrerlaubnis.svg" width="22" height="15" ><br>' . $needSbf . '  </p></li>
                             </ul>
                         </div>
                     </div>

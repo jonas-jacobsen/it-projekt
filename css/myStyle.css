@@ -36,7 +36,6 @@ button a:hover {
     margin-right: 10px;
     margin-left: 10px;
 }
-
 /*Überschrift auf den Seiten etwas runtersetzen weil nav-Fixed*/
 .container-top {
     margin-top: 60px;
@@ -55,6 +54,7 @@ button a:hover {
     margin-right: 20px;
     margin-bottom: 50px;
 }
+
 /*footer*/
 #footer {
     bottom: 0;
@@ -259,6 +259,9 @@ a.navbar-brand {
 }
 
 /*result Seite*/
+.panelTransparent {
+    opacity: 1.0 !important;
+}
 .panel {
     border: none !important;
 }
@@ -348,6 +351,11 @@ a.navbar-brand {
 
 .schiffsname {
     color: #0eaac0;
+}
+
+/*bilder im Slider immer mit 100% width*/
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    width: 100%;
 }
 
 /*Searchbar*/

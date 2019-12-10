@@ -108,17 +108,17 @@ if($row["typ"] == "Yacht" || $row["typ"] == "Windjammer" || $row["typ"] == "Mehr
                             <!-- Verpackung für die Elemente -->
                             <div class="carousel-inner" role="listbox">
                                 <div class="item active">
-                                    <img src="<?php echo $bildId ?>" alt="...">
+                                    <img src="<?php echo $row['bildId'] ?>" alt="...">
                                     <div class="carousel-caption">
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="<?php echo $bildId ?>" alt="...">
+                                    <img src="<?php echo $row['bild2'] ?>" alt="...">
                                     <div class="carousel-caption">
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img src="<?php echo $bildId ?>" alt="...">
+                                    <img src="<?php echo $row['bild3'] ?>" alt="...">
                                     <div class="carousel-caption">
                                     </div>
                                 </div>
@@ -383,11 +383,11 @@ if($row["typ"] == "Yacht" || $row["typ"] == "Windjammer" || $row["typ"] == "Mehr
                                 <h6 class="my-0">Preis pro Tag</h6>
                                 <small class="text-muted">Die Preise variieren zu Saisonzeiten</small>
                             </div>
-                            <span class="text-muted"><?php echo $preis ?></span>
+                            <span class="text-muted">&euro; <?php echo $preis ?>,00</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Gesamt</span>
-                            <strong>&euro; <?php echo $gesamtPreis ?></strong>
+                            <strong>&euro; <?php echo $gesamtPreis ?>,00</strong>
                         </li>
                     </ul>
                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required="required">

@@ -1,13 +1,9 @@
--Verfügbarkeitstabelle (Nice To have)
--Ausstatung des Bootes mit kleinen Icons (Nice To have)
+-Verfügbarkeitstabelle -dbTabelle mit allen Booten und Spalten mit Calenderdaten
+-Telefonbutton auf Erfahren Sie mehr Seite noch kein Link (niceToHave)
 -Bei result-Seite wenn keine Ergebnisse gefunden werden --> auflistung von Booten die noch buchbar sind (nice to have)
--Telefonbutton auf Erfahren Sie mehr Seite noch kein Link
--Bootstypen alle anzeigen lassen
--Bei "Kajuten" keine Angabe
-
 
 Was noch nicht funktioniert:
--
+-Buchung überprüfen, Bei der Präsentation hat die Stornierung nicht funktioniert
 
 erledigt:
 -stornierungsbutton Programmieren
@@ -20,3 +16,10 @@ erledigt:
 -Footer bottom fixed
 -Bei Buchung auch eine Mail an XXL baltic Yachting
 -Preis HS NS noch aufschreiben
+-Ausstatung des Bootes mit kleinen Icons (Nice To have)
+-Bootstypen alle anzeigen lassen
+
+ $sql1 = "SELECT * From Buchungen";
+            $result1 = mysqli_query($connect, $sql1);
+            while ($row1 = mysqli_fetch_array($result1)){
+                if($tspmUserAnfangsDatum > strtotime($row1['endDatum']) || $tspmUserEndDatum < strtotime($row1['startDatum'])){
