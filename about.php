@@ -23,19 +23,12 @@ include("components/navbar.php");
         </div>
     </div>
     <div class="container">
-        <h2>Wer wir sind</h2>
+        <h2>Einmalige Momente erleben</h2>
 
         <div class="row">
             <div class="col-md-7">
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                    ut fermentum massa justo sit amet risus.</p>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                    ut fermentum massa justo sit amet risus.</p>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                    ut fermentum massa justo sit amet risus.</p>
+                <p>Hochwertig, komfortabel und majestätisch: Ein Segelboot befördert Ihren Bootsurlaub in ganz neue Dimensionen. Die neuesten Modelle zeichnen sich durch die Kombination von Wohnlichkeit, Funktionalität und jede Menge Möglichkeit zur Entspannung aus. Wassersport mit Wasserski oder Wakeboard sowie die Mahlzeiten an Bord sind das i-Tüpfelchen Ihres Yachtcharter, wenn Sie sich eine Luxusyacht mieten.</p>
+                <p>Während der professionelle Skipper mit seiner Crew Sie an die schönsten Orte navigiert, können Sie sorgenfrei ein Glas Champagner genießen und den Blick in die Weite schweifen lassen.</p>
                 <h2>Wie du uns erreichen Kannst</h2>
                 <p>Du möchtest uns eine Nachricht zukommen lassen oder hast fragen zu unserem Angebot? Dann Rufe uns einfach an oder nutze unsere Kontaktformular</p>
                 <div class="row">
@@ -64,24 +57,15 @@ include("components/navbar.php");
         <div class="row">
             <div class="col-md-4">
                 <h2>Buchen</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                    mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="index.php" role="button">Details anschauen &raquo;</a></p>
+                <p>Mit der Suchfunktion können Sie alle Boote finden die wir anbieten. Bei uns finden Sie Segelboote zum besten Preis. Unsere inbegriffene Versicherung ermöglicht Ihnen risikoloses mieten und segeln.</p>
             </div>
             <div class="col-md-4">
-                <h2>Geführte Törns</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-                    mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-                    mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">Details anschauen &raquo;</a></p>
+                <h2>Zahlung</h2>
+                <p>Buchen Sie direkt und sicher online und mieten Sie mit wenigen Klicks oder Segelboot Ihrer Träume. Wenn sie per Kredikarte zahlen wird der Preis erst nach Annahme Ihrer Mietanfrage durch uns abgebucht. 100 % sichere Bezahlung.</p>
             </div>
             <div class="col-md-4">
-                <h2>Dritter Punkt</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-                    ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-default" href="#" role="button">Details anschauen &raquo;</a></p>
+                <h2>Versicherung</h2>
+                <p>Eine Optionale Vollkaskoversicherung bis zu 8 Millionen Euro und sichere Kautionshinterlegung sind möglich.</p>
             </div>
         </div>
 
@@ -108,11 +92,11 @@ include("components/navbar.php");
                           placeholder="Schreibe hier was du uns gerne Mitteilen würdest" required="required"></textarea>
             </div>
             <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required>
-            <label style="font-weight: 400" class="form-check-label" for="invalidCheck29">Mit abschicken deiner Anfrage stimmst du unseren AGB's zu*</label><br>
+            <label style="font-weight: 400" class="form-check-label" for="invalidCheck29">Mit abschicken deiner Anfrage stimmst du unseren AGB's* zu</label><br>
             <button type="submit" id="submit" class="btn btn-primary">Abschicken</button><br>
-            <small>*Mit abschließen deiner Buchung und so weiter und so fort...</small>
+            <br><br>
+            <br><br>
         </form>
-        <hr>
 
     </div>
 <?php

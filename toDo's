@@ -1,6 +1,5 @@
 -Verfügbarkeitstabelle -dbTabelle mit allen Booten und Spalten mit Calenderdaten
 -Telefonbutton auf Erfahren Sie mehr Seite noch kein Link (niceToHave)
--Bei result-Seite wenn keine Ergebnisse gefunden werden --> auflistung von Booten die noch buchbar sind (nice to have)
 
 Was noch nicht funktioniert:
 -Buchung überprüfen, Bei der Präsentation hat die Stornierung nicht funktioniert
@@ -18,8 +17,4 @@ erledigt:
 -Preis HS NS noch aufschreiben
 -Ausstatung des Bootes mit kleinen Icons (Nice To have)
 -Bootstypen alle anzeigen lassen
-
- $sql1 = "SELECT * From Buchungen";
-            $result1 = mysqli_query($connect, $sql1);
-            while ($row1 = mysqli_fetch_array($result1)){
-                if($tspmUserAnfangsDatum > strtotime($row1['endDatum']) || $tspmUserEndDatum < strtotime($row1['startDatum'])){
+-Bei result-Seite wenn keine Ergebnisse gefunden werden --> auflistung von Booten die noch buchbar sind (nice to have)

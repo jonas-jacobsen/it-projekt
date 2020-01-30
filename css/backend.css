@@ -1,0 +1,14 @@
+.login-form {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+@media (min-width: 767px) {
+    .login-form form {
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+}

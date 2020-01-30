@@ -31,7 +31,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
             <li>
                 <form action="" method="get" class="form-horizontal">
                     <div class="form-group">
-                        <label for="anzPersonen">Segelbootstyp</label>
+                        <label for="anzPersonen"><span class="glyphSearchBar"><img src="assets/icons/boat.svg" width="22" height="15"></span>Segelbootstyp</label>
                         <div class="col-sm-10">
                             <select name="typ" class="form-control" id="typ">
                                 <option><?php echo $typ ?></option>
@@ -60,7 +60,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="anzPersonen">Anzahl der Personen</label>
+                        <label for="anzPersonen"><span class="glyphSearchBar"><img src="assets/icons/multiple-users-silhouette.svg" width="22" height="15"></span>Anzahl der Personen</label>
                         <div class="col-sm-10">
                             <select name="anzPersonen" class="form-control" id="anzPersonen">
                                 <option><?php if ($anzPersonenBuchung == null) {
@@ -93,8 +93,9 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                             </select>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="anzPersonen">Anzahl der Kajüten</label>
+                        <label for="anzPersonen"><span class="glyphSearchBar"><img src="assets/icons/bed.svg" width="22" height="15"></span>Anzahl der Kajüten</label>
                         <div class="col-sm-10">
                             <select name="anzKajueten" class="form-control" id="anzKajueten">
                                 <option><?php echo $anzKajueten ?></option>
@@ -120,7 +121,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="anzPersonen">Datum auswählen</label>
+                        <label for="anzPersonen"><span class="glyphSearchBar"><img src="assets/icons/calendar.svg" width="22" height="15"></span>Datum auswählen</label>
                         <div class="col-sm-10">
                             <input type="text" class="datepicker" name="reservation" id="datepicker"
                                    value="<?php echo $ausleihDatum ?>"/>
@@ -254,12 +255,20 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                 }
 
                 $schlafplatz = floatval($row["anzKajueten"]) * 2;
+
                 /* Preis aufgrund von Haupt oder Nebensaison bestimmen*/
                 $aktuellerMonat = date("m");
                 if ($aktuellerMonat < 6 || $aktuellerMonat > 10) {
                     $preisProTag = $row['preisNS'];
                 } else {
                     $preisProTag = $row['preisHS'];
+                }
+
+                //Prüfen ob anzahlSchlafplätze angezeigt werden muss
+                if($row["anzKajueten"] == 0){
+
+                }else{
+                    $showNumbersOfRooms = "<li class=\"flex-container space-between\"><p><img src=\"assets/icons/bed.svg\" width=\"22\" height=\"15\" ><br>  $schlafplatz  Schlafplätze </p></li>";
                 }
 
                 /*Prüfung ob Sbf notwenig ist*/
@@ -286,7 +295,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                         <div>
                             <h3>' . $row["bootname"] . '</h3>
                             <p class="schiffsname">' . $row["bootModell"] . '</p>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                            <p>'.$row['bootText'].'</p>
                         </div>
                        
                         <div class="panelUnten">
@@ -339,7 +348,7 @@ $beiboote = "Wie kommt man vom Ankerplatz an Land? In der Kreditkartenwerbung sc
                                 <li class="flex-container space-between"><p><svg width="22" height="15" viewBox="0 0 22 15"><g fill="none" fill-rule="evenodd"><path fill="#777" fill-rule="nonzero" d="M2.933 9h-.517c-.303-1.137-.538-1.774-.704-1.91-.366-.302-2.16-.763-.555-2.808C2.76 2.236 5.96 0 10.887 0c4.925 0 8.631 2.143 10.061 4.282 1.43 2.138-.333 2.391-.643 2.819-.138.19-.33.824-.578 1.899H2.933zm16.338 2c-.916 2.436-3.111 3.958-8.391 4-5.318.04-7.552-2.008-8.29-4h16.68z"></path> <path fill="#FFF" d="M7.648 6.01c-.065 0-.11-.028-.134-.085-.025-.057-.017-.104.024-.142l.829-.775a.137.137 0 0 1 .098-.034c.04 0 .073.011.097.034l.829.775c.04.038.049.085.024.142-.024.057-.069.086-.134.086h-.426c.113.296.345.543.694.74.317.175.67.285 1.06.33V4.917h-.633a.146.146 0 0 1-.104-.04.128.128 0 0 1-.042-.097v-.456c0-.038.014-.07.042-.096a.146.146 0 0 1 .104-.04h.634V4.13a1.154 1.154 0 0 1-.56-.399 1.02 1.02 0 0 1-.22-.638c0-.304.116-.564.347-.78.232-.217.51-.321.835-.314.325.008.6.118.823.33.223.213.335.468.335.764 0 .236-.073.448-.22.638-.145.19-.332.323-.56.399v.057h.634c.04 0 .075.013.104.04a.128.128 0 0 1 .042.096v.456c0 .038-.014.07-.042.097a.146.146 0 0 1-.104.04h-.634V7.08c.39-.045.744-.155 1.06-.33.35-.197.582-.444.695-.74h-.426c-.065 0-.11-.029-.134-.086-.025-.057-.017-.104.024-.142l.829-.775a.137.137 0 0 1 .097-.034c.041 0 .074.011.098.034l.829.775c.04.038.049.085.024.142-.024.057-.069.086-.134.086h-.39c-.09.372-.288.702-.597.99-.293.267-.65.472-1.073.616a3.973 3.973 0 0 1-2.584 0 3.026 3.026 0 0 1-1.073-.615 1.974 1.974 0 0 1-.597-.991h-.39zM11 2.73a.388.388 0 0 0-.274.108.34.34 0 0 0 0 .512.388.388 0 0 0 .274.109.388.388 0 0 0 .274-.109.34.34 0 0 0 0-.512A.388.388 0 0 0 11 2.73z"></path></g></svg><br>Skipper auf Anfrage</p></li>
                                 <li class="flex-container space-between"><p><img src="assets/icons/multiple-users-silhouette.svg" width="22" height="15" ><br>Max. ' . $row["anzPersonen"] . ' Personen</p></li>
                                 <li class="flex-container space-between"><p><img src="assets/icons/calendar.svg" width="22" height="15" ><br>Min. Mietdauer 1 Tag</p></li>
-                                <li class="flex-container space-between"><p><img src="assets/icons/bed.svg" width="22" height="15" ><br>' . $schlafplatz . ' Schlafplätze </p></li>
+                                '.$showNumbersOfRooms.'
                                 <li class="flex-container space-between"><p><img src="assets/icons/fahrerlaubnis.svg" width="22" height="15" ><br>' . $needSbf . '  </p></li>
                             </ul>
                         </div>

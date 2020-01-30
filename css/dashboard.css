@@ -62,11 +62,14 @@ body {
 
 /* Sidebar navigation */
 .sidebar-nav {
-    position: absolute;
+
     margin-top: 20px;
-    width: 90%;
-    padding-left: 7%;
+    padding-right: 8px;
+    padding-left: 8px;
     list-style: none;
+}
+.sidebar-nav .col-sm-10 {
+    width: 100%;
 }
 .sidebar-nav label {
     color: #ffffff;

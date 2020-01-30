@@ -67,9 +67,9 @@ $anfangsDatumDB = $anfangsDatum;
 $endDatumDB = $endDatum;
 
 /*Entscheidung über Glyphicon*/
-if($row["typ"] == "Yacht" || $row["typ"] == "Windjammer" || $row["typ"] == "Mehrrumpfboot") {
+if ($row["typ"] == "Yacht" || $row["typ"] == "Windjammer" || $row["typ"] == "Mehrrumpfboot") {
     $glyph = "<span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\">";
-}else{
+} else {
     $glyph = "<span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\">";
 }
 ?>
@@ -227,12 +227,12 @@ if($row["typ"] == "Yacht" || $row["typ"] == "Windjammer" || $row["typ"] == "Mehr
                 <div class="form-group">
                     <label for="validationCustom01">Vor- und Nachname</label>
                     <input type="text" name="persName" class="form-control" id="validationCustom01"
-                           placeholder="Bsp: max.mustermann@outlook.de" required>
+                           placeholder="Bsp: Max Mustermann" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Emailadresse</label>
                     <input type="email" name="email" class="form-control"
-                           placeholder="Bsp: Max Mustermann" id="validationCustom02" required>
+                           placeholder="Bsp: maxmustermann@gmx.de" id="validationCustom02" required>
                 </div>
                 <div class="form-group">
                     <label for="strasse">Straße und Hausnummer</label>
@@ -391,14 +391,15 @@ if($row["typ"] == "Yacht" || $row["typ"] == "Windjammer" || $row["typ"] == "Mehr
                         </li>
                     </ul>
                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck29" required="required">
-                    <label class="form-check-label" for="invalidCheck29">Agree to terms and conditions*</label><br>
-                    <button type="submit" name="submit" id="buttonID" class="btn btn-primary">Buchen</button><br>
-                    <small>*Mit abschließen deiner Buchung und so weiter und so fort...</small>
+                    <label class="form-check-label" for="invalidCheck29">Mit abschicken deiner Anfrage stimmst du unseren AGB's* zu</label><br>
+                    <button type="submit" name="submit" id="buttonID" class="btn btn-primary">Buchen</button>
+                    <br>
                 </div>
             </div>
         </div>
     </form>
     <!--Form validieren -->
+    </div>
 </div>
 <!--script zum anzeigen von Kredidkarten informationen oder Ueberweisung -->
 <script>

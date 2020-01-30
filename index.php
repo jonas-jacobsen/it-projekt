@@ -41,6 +41,7 @@ if (isset($_POST['ortDerAusleihe'])) {
 </head>
 
 <body>
+
 <nav class="navbar navbar-fixed-top" id="navbartopIndex">
     <div class="navcontainer">
         <div class="navbar-header">
@@ -54,7 +55,7 @@ if (isset($_POST['ortDerAusleihe'])) {
             <a class="navbar-brand" href="index.php">XXL Baltic Yachting</a>
         </div>
 
-      <!--  <div id="navbar" class="navbar-collapse collapse"> -->
+
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right" >
                 <li><a href="yourbooking.php">Deine Buchung</a></li>
@@ -62,13 +63,13 @@ if (isset($_POST['ortDerAusleihe'])) {
                 <li><a href="tel:+499123456789"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></a></li>
                 <li><a href="about.php#kontaktformular"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
             </ul>
-        </div><!--/.navbar-collapse -->
+        </div>
     </div>
 </nav>
 
 <div class="register">
-    <h2>Was für ein Segelboot suchst du?</h2>
-    <p>Einfach den gewünschten Typ auswählen und wir finden das passende Boot für dich</p>
+    <h2>Magische Momente erleben</h2>
+    <p>Einfach den gewünschten Segelbootstyp auswählen und wir finden das passende Boot für dich</p>
 
     <form action="results.php" method="get" class="form-inline">
         <div class="form-group">

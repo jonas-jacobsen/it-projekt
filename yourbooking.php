@@ -7,6 +7,7 @@ $row = mysqli_fetch_array($result);
 $aktuelesDate = Date("d.m.Y");
 
 if ($_GET['stornieren'] == '1') {
+
     $sql3 = "INSERT INTO `Stornierungen` (`id`, `buchungsNr`, `name`, `anfangsDatum`, `endDatum`, `stornierungsDatum`, `email`) VALUES ('', '$buchungsnummer', '$row[persName]', '$row[startDatum]', '$row[endDatum]', '$aktuelesDate', '$row[emailadresse]');";
     $result = mysqli_query($connect, $sql3);
 
